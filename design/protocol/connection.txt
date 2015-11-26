@@ -1,0 +1,13 @@
+packet Connect ->server {
+	username : string
+}
+
+packet Connected <-server {
+}
+
+packet Disconnect ->server {
+}
+
+packet Kicked <-server {
+	message : string
+}

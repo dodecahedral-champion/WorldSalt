@@ -1,0 +1,49 @@
+graph G {
+	// entity composition
+	sense_blocks -- sense_component [style=dotted];
+	motor_blocks -- motor_component [style=dotted];
+	brain_blocks -- brain_component [style=dotted];
+
+	grids -- sense_blocks [style=dotted];
+	grids -- motor_blocks [style=dotted];
+	grids -- brain_blocks [style=dotted];
+
+	// thinking
+	brain_component -- brain_engine -- {ai_proxy, client_proxy};
+
+	// sensing
+	sense_component -- sensor_engine -- brain_engine;
+
+	// acting
+	brain_engine -- motor_engine -- motor_component;
+
+	// physics update
+	physics_engine -- grids;
+
+	// persistence
+	persistence_engine -- grids;
+	persistence_engine -- storage;
+
+	// -------------------------------------------------------------------
+
+	grids [shape=Msquare];
+
+	motor_blocks [shape=box3d];
+	sense_blocks [shape=box3d];
+	brain_blocks [shape=box3d];
+
+	sense_component [shape=box, style=rounded];
+	motor_component [shape=box, style=rounded];
+	brain_component [shape=box, style=rounded];
+
+	ai_proxy [shape=house];
+	client_proxy [shape=house];
+
+	storage [shape=note];
+
+	sensor_engine [shape=component];
+	motor_engine [shape=component];
+	brain_engine [shape=component];
+	persistence_engine [shape=component];
+	physics_engine [shape=component];
+}

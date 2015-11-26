@@ -1,0 +1,9 @@
+Chat takes place over a parallel IRC server, instead of through the normal block-interaction protocol.
+
+The server is reified as one or more IRC services which accept commands.
+
+Currently, user identities aren't synchronised between the two sides.
+Probably this will consist of modeing IRC users who prove their identity via a cross-protocol challenge.
+
+When user authentication is implemented, users should be able to authenticate via pure IRC if desired.
+This allows e.g. admins to access server commands under poor network conditions.

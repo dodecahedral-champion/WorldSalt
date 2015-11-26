@@ -1,0 +1,15 @@
+packet ClientPing ->server {
+	id : UniqueID
+}
+
+packet ClientPingResponse <-server {
+	request : UniqueID
+}
+
+packet ServerPing <-server {
+	id : UniqueID
+}
+
+packet ServerPingResponse ->server {
+	request : UniqueID
+}

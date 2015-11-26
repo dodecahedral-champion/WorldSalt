@@ -1,0 +1,7 @@
+The protocol currently assumes unlimited bandwidth and no dropped packets, for initial simplicity.
+
+Later we can telescope some updates into delta packets to reduce bandwidth concerns.
+
+The protocol initially assumes a coordinate system oriented at the client.
+This coordinate system lies in place as the client moves around, until a CoordinateUpdate packet arrives in some future sync.  This packet defines the new coordinate origin in the old system.  A CoordinateUpdate packet is always the first packet in a sync response.  The updated system applies to the rest of that response.
+

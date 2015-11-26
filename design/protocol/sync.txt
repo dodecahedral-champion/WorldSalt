@@ -1,0 +1,29 @@
+packet SyncRequest ->server {
+	id : UniqueID
+}
+
+packet CoordinateUpdate <-server {
+	request : UniqueID
+	translation : Position
+	orientation : Orientation
+}
+
+packet ClientStatus <-server {
+	request : UniqueID
+	entity_id : EntityID
+}
+
+packet EntityStatus <-server {
+	request : UniqueID
+	entity_id : EntityID
+	position : Position
+	orientation : Orientation
+	velocity : Velocity
+	bounds : GridBounds
+}
+
+packet GridStatus <-server {
+	request : UniqueID
+	entity_id : EntityID
+	blocks : Map<GridPosition, Block>
+}
