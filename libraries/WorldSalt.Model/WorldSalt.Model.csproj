@@ -33,6 +33,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IWorld.cs" />
+    <Compile Include="IGrid.cs" />
+    <Compile Include="Values\BlockAxisRotation.cs" />
+    <Compile Include="Values\BlockOrientation.cs" />
+    <Compile Include="Values\BlockFace.cs" />
+    <Compile Include="Values\GridAddress.cs" />
+    <Compile Include="Values\Orientation.cs" />
+    <Compile Include="Values\Velocity.cs" />
+    <Compile Include="Blocks\IBlockState.cs" />
+    <Compile Include="Blocks\IBlock.cs" />
+    <Compile Include="Blocks\IBrainBlock.cs" />
+    <Compile Include="Blocks\IMotorBlock.cs" />
+    <Compile Include="Blocks\ISenseBlock.cs" />
+    <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\IGriddedEntity.cs" />
+    <Compile Include="Values\Placement.cs" />
+    <Compile Include="Values\Position.cs" />
+    <Compile Include="Values\GridBounds.cs" />
+    <Compile Include="Values\AxisBounds.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Values\" />
+    <Folder Include="Blocks\" />
+    <Folder Include="Entities\" />
+  </ItemGroup>
 </Project>

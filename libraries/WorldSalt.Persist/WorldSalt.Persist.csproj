@@ -33,6 +33,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IWorldStorage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\WorldSalt.Model\WorldSalt.Model.csproj">
+      <Project>{58FFF3C9-3C62-45F8-9CE4-02437828E237}</Project>
+      <Name>WorldSalt.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
