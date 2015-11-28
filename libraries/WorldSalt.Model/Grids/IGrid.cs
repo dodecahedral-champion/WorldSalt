@@ -1,4 +1,4 @@
-namespace WorldSalt.Model {
+namespace WorldSalt.Model.Grids {
 	using WorldSalt.Model.Blocks;
 	using WorldSalt.Model.Values;
 
