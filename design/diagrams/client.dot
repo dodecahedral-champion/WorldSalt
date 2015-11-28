@@ -1,0 +1,34 @@
+digraph G {
+	node [fillcolor=cyan, style=filled];
+	node [shape=box];
+	rendered_scene;
+	command_stream;
+
+	sensed_world [shape=Msquare];
+
+	node [shape=house, fillcolor=orange];
+	user_interface;
+	server_proxy;
+
+	node [shape=tab, fillcolor=yellow];
+	MODEL;
+	RENDER;
+	THINK;
+	NETWORK;
+
+	// -----------------------------------------------------------
+
+	edge [style=normal, arrowhead=vee, arrowtail=vee]
+	server_proxy -> sensed_world;
+	sensed_world -> rendered_scene;
+	rendered_scene -> user_interface;
+	sensed_world -> user_interface;
+	user_interface -> command_stream;
+	command_stream -> server_proxy;
+
+	edge [style=dotted, arrowhead=odot]
+	NETWORK -> server_proxy;
+	MODEL -> sensed_world;
+	RENDER -> rendered_scene;
+	THINK -> command_stream;
+}

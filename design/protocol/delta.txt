@@ -1,0 +1,22 @@
+type 0x04
+
+packet ClientUpdate <-server subtype 0x01 {
+	entity : EntityID
+	parent : EntityID
+}
+
+packet EntityUpdate <-server subtype 0x02 {
+	entity : EntityID
+	parent : EntityID
+	position : Position
+	orientation : Orientation
+	velocity : Velocity
+	bounds : GridBounds
+}
+
+-- any unchanged chunks aren't included in the SparseGrid
+-- chunks which have become empty are included as fully-zero chunks
+packet GridUpdate <-server subtype 0x03 {
+	entity : EntityID
+	blocks : SparseGrid<Block>
+}

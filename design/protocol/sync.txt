@@ -1,29 +1,33 @@
-packet SyncRequest ->server {
+type 0x02
+
+packet SyncRequest ->server subtype 0x00 {
 	id : UniqueID
 }
 
-packet CoordinateUpdate <-server {
+packet CoordinateUpdate <-server subtype 0x01 {
 	request : UniqueID
 	translation : Position
 	orientation : Orientation
 }
 
-packet ClientStatus <-server {
+packet ClientStatus <-server subtype 0x02 {
 	request : UniqueID
-	entity_id : EntityID
+	entity : EntityID
+	parent : EntityID
 }
 
-packet EntityStatus <-server {
+packet EntityStatus <-server subtype 0x03 {
 	request : UniqueID
-	entity_id : EntityID
+	entity : EntityID
+	parent : EntityID
 	position : Position
 	orientation : Orientation
 	velocity : Velocity
 	bounds : GridBounds
 }
 
-packet GridStatus <-server {
+packet GridStatus <-server subtype 0x04 {
 	request : UniqueID
-	entity_id : EntityID
-	blocks : Map<GridPosition, Block>
+	entity : EntityID
+	blocks : SparseGrid<Block>
 }

@@ -1,13 +1,26 @@
-packet Connect ->server {
+type 0x00
+
+packet Connect ->server subtype 0x00 {
 	username : string
+	preferred_protocol : ProtocolVersion
+	supported_protocols : List<ProtocolVersion>
 }
 
-packet Connected <-server {
+packet Connected <-server subtype 0x01 {
+	protocol : ProtocolVersion
 }
 
-packet Disconnect ->server {
+packet UnsupportedProtocolVersion <-server subtype 0x02 {
+	preferred_protocol : ProtocolVersion
+	supported_protocols : List<ProtocolVersion>
+	#halt
 }
 
-packet Kicked <-server {
+packet Disconnect ->server subtype 0x03 {
+	#halt
+}
+
+packet Kicked <-server subtype 0x04 {
 	message : string
+	#halt
 }

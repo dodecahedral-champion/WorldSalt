@@ -1,0 +1,89 @@
+-- all integers are sent little-endian
+
+%packet_header :=
+	<length_bytes : u32>
+	<type : u8>
+	<subtype : u8>
+
+ProtocolVersion := u64
+Coord := s64
+Angle := s64
+AxisVelocity := s64
+ChunkIndex := s64
+UniqueID := u128
+EntityID := u128 -- 0 is reserved for "no entity"
+ExtensionID := u128
+BlockTypeID := u128
+BlockSubtype := u8
+BlockState := u64
+
+ExtensionSpecifier :=
+	<session_id : ExtensionID>
+	<unique_name : string>
+	<version : string>
+
+BlockTypeSpecifier :=
+	<session_id : BlockTypeID>
+	<extension : ExtensionID>
+	<extension_block : UniqueID>
+
+string :=
+	<length_bytes : u64>
+	<utf8_data : u8 * length_bytes>
+
+List<T> :=
+	<count : u64>
+	<items : T * count>
+
+Position :=
+	<x : Coord>
+	<y : Coord>
+	<z : Coord>
+
+Orientation :=
+	<pitch : Angle>
+	<roll : Angle>
+	<yaw : Angle>
+
+Velocity :=
+	<x : AxisVelocity>
+	<y : AxisVelocity>
+	<z : AxisVelocity>
+
+GridBounds :=
+	<x : AxisBounds>
+	<y : AxisBounds>
+	<z : AxisBounds>
+
+AxisBounds :=
+	<min : GridIndex>
+	<max : GridIndex>
+
+ChunkPosition :=
+	<x : ChunkIndex>
+	<y : ChunkIndex>
+	<z : ChunkIndex>
+
+SparseGrid<T> := List<Chunk<T>>
+
+-- A chunk is currently understood to be a 16*16*16 subcube of a grid.
+-- The chunk covering grid <0,0,0>--<15,15,15> is understood to be at chunk position <0,0,0>
+Chunk<T> :=
+	<position : ChunkPosition>
+	<items : RLEList<T>>
+
+RLEList<T> := List<RLESegment<T>>
+
+RLESegment<T> :=
+	either
+		<mark : u8 =0x00>
+		<explicit_items : List<T>>
+	or
+		<run_length : u8>
+		<value : T>
+
+Block :=
+	<type : BlockTypeID>
+	<subtype : BlockSubtype>
+	<orientation : BlockOrientation>
+	<state : BlockState>

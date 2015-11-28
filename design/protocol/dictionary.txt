@@ -1,0 +1,6 @@
+type 0x03
+
+-- indexed by BlockTypeIndex
+packet BlockTypeDictionary <-server subtype 0x00 {
+	types : List<BlockTypeID>
+}

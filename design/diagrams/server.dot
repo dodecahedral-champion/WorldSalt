@@ -1,0 +1,37 @@
+digraph G {
+	node [fillcolor=cyan, style=filled];
+	node [shape=box];
+	command_stream;
+
+	storage [shape=note, fillcolor=grey];
+	simulation [shape=component, fillcolor=green];
+	client_proxy [shape=house, fillcolor=orange];
+
+	node [shape=Msquare];
+	world;
+	sensed_world;
+
+	node [shape=tab, fillcolor=yellow]
+	MODEL;
+	SIMULATE;
+	PERSIST;
+	THINK;
+	NETWORK;
+
+	// -----------------------------------------------------------
+
+	edge [style=normal, arrowhead=vee, arrowtail=vee]
+	world -> {storage, simulation} [dir=both];
+	world -> sensed_world [arrowhead=veevee];
+	sensed_world -> client_proxy;
+	client_proxy -> command_stream;
+	command_stream -> world [arrowhead=veevee];
+
+	edge [style=dotted, arrowhead=odot]
+	PERSIST -> storage;
+	SIMULATE -> simulation;
+	MODEL -> world;
+	MODEL -> sensed_world;
+	THINK -> command_stream;
+	NETWORK -> client_proxy;
+}

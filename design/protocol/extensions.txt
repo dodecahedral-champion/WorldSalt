@@ -1,0 +1,11 @@
+type 0xfe
+
+-- indexed by ExtensionIndex
+packet ExtendRequest <-server subtype 0x00 {
+	extensions : List<ExtensionSpecifier>
+	optional : List<ExtensionSpecifier>
+}
+
+packet ExtendResponse ->server subtype 0x001 {
+	enabled : List<ExtensionID>
+}

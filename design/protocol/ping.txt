@@ -1,15 +1,17 @@
-packet ClientPing ->server {
+type 0x01
+
+packet ClientPing ->server subtype 0x00 {
 	id : UniqueID
 }
 
-packet ClientPingResponse <-server {
+packet ClientPingResponse <-server subtype 0x01 {
 	request : UniqueID
 }
 
-packet ServerPing <-server {
+packet ServerPing <-server subtype 0x02 {
 	id : UniqueID
 }
 
-packet ServerPingResponse ->server {
+packet ServerPingResponse ->server subtype 0x03 {
 	request : UniqueID
 }

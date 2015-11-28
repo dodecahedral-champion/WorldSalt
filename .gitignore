@@ -1,2 +1,10 @@
 *~
 design/diagrams/*.png
+*.user
+*.userprefs
+*.dll
+*.exe
+bin
+obj
+Debug
+Release
