@@ -51,7 +51,8 @@
     <Compile Include="Values\Placement.cs" />
     <Compile Include="Values\Position.cs" />
     <Compile Include="Values\GridBounds.cs" />
-    <Compile Include="Values\AxisBounds.cs" />
+    <Compile Include="Values\GridAxisBounds.cs" />
+    <Compile Include="Blocks\Block.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

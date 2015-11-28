@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{40053994-0CAD-40FB-9F74-71420260E230}</ProjectGuid>
+    <ProjectGuid>{0A9E84B4-2ACF-4E8A-9EFB-B6EA3279906C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>WorldSalt.Think</RootNamespace>
-    <AssemblyName>WorldSalt.Think</AssemblyName>
+    <RootNamespace>WorldSalt.UnitTests.Model</RootNamespace>
+    <AssemblyName>WorldSalt.UnitTests.Model</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,14 +30,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f">
+      <Private>False</Private>
+      <Package>rhino-mocks</Package>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISensoryLobe.cs" />
-    <Compile Include="IMotorLobe.cs" />
-    <Compile Include="ISensedWorld.cs" />
+    <Compile Include="Blocks\BlockUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Blocks\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WorldSalt.Model\WorldSalt.Model.csproj">
       <Project>{58FFF3C9-3C62-45F8-9CE4-02437828E237}</Project>

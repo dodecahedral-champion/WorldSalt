@@ -13,12 +13,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.Think", "WorldSal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.Render", "WorldSalt.Render\WorldSalt.Render.csproj", "{57307C24-9061-4FEB-9969-14F735E21577}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.UnitTests.Model", "WorldSalt.UnitTests.Model\WorldSalt.UnitTests.Model.csproj", "{0A9E84B4-2ACF-4E8A-9EFB-B6EA3279906C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A9E84B4-2ACF-4E8A-9EFB-B6EA3279906C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9E84B4-2ACF-4E8A-9EFB-B6EA3279906C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9E84B4-2ACF-4E8A-9EFB-B6EA3279906C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9E84B4-2ACF-4E8A-9EFB-B6EA3279906C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{17E02786-0A3C-47E8-96F0-B6C2AE176E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{17E02786-0A3C-47E8-96F0-B6C2AE176E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17E02786-0A3C-47E8-96F0-B6C2AE176E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
