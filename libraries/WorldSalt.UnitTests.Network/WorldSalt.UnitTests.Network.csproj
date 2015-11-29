@@ -39,7 +39,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UntypedPacketUnitTest.cs" />
+    <Compile Include="Packets\UntypedPacketUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -47,5 +47,8 @@
       <Project>{866F3168-032F-49F4-AC44-9084EF2D8C9B}</Project>
       <Name>WorldSalt.Network</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Packets\" />
   </ItemGroup>
 </Project>

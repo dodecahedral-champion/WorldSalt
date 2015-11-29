@@ -1,4 +1,4 @@
-namespace WorldSalt.UnitTests.Network {
+namespace WorldSalt.UnitTests.Network.Packets {
 	using System;
 	using System.Collections.Generic;
 	using NUnit.Framework;
