@@ -3,22 +3,22 @@ namespace WorldSalt.Network.Payloads.Connection {
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.SerialisationExtensions;
 
-	public class DisconnectPayload : ITypedPayload<FromClient> {
-		public byte Type { get { return 0x00; } }
-		public byte Subtype { get { return 0x03; } }
+	public class DisconnectPayload : BaseTypedPayload<FromClient> {
+		public override byte Type { get { return 0x00; } }
+		public override byte Subtype { get { return 0x03; } }
 
-		public uint Length {
+		public override uint Length {
 			get { return 0; }
 		}
 
 		public DisconnectPayload() {
 		}
 
-		public void SetBytes(byte[] bytes) {
-			new MemoryStream(bytes).AssertEnd();
+		public override void SetBytes(byte[] bytes) {
+			MakeDirectedByteStream(bytes).AssertEnd();
 		}
 
-		public byte[] GetBytes() {
+		public override byte[] GetBytes() {
 			return new byte[0];
 		}
 	}

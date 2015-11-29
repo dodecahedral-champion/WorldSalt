@@ -4,11 +4,11 @@ namespace WorldSalt.Network.Payloads.Connection {
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.SerialisationExtensions;
 
-	public class KickedPayload : ITypedPayload<FromServer> {
-		public byte Type { get { return 0x00; } }
-		public byte Subtype { get { return 0x04; } }
+	public class KickedPayload : BaseTypedPayload<FromServer> {
+		public override byte Type { get { return 0x00; } }
+		public override byte Subtype { get { return 0x04; } }
 
-		public uint Length {
+		public override uint Length {
 			get {
 				return
 					Message.SerialisationLength();
@@ -24,17 +24,17 @@ namespace WorldSalt.Network.Payloads.Connection {
 			Message = message;
 		}
 
-		public void SetBytes(byte[] bytes) {
+		public override void SetBytes(byte[] bytes) {
 			string message;
 
-			new MemoryStream(bytes)
+			MakeDirectedByteStream(bytes)
 				.Deserialise(out message)
 				.AssertEnd();
 
 			Message = message;
 		}
 
-		public byte[] GetBytes() {
+		public override byte[] GetBytes() {
 			return Message.Serialise()
 				.ConcatenateBuffers();
 		}

@@ -6,11 +6,11 @@ namespace WorldSalt.Network.Payloads.Connection {
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.SerialisationExtensions;
 
-	public class UnsupportedProtocolVersionPayload : ITypedPayload<FromServer> {
-		public byte Type { get { return 0x00; } }
-		public byte Subtype { get { return 0x02; } }
+	public class UnsupportedProtocolVersionPayload : BaseTypedPayload<FromServer> {
+		public override byte Type { get { return 0x00; } }
+		public override byte Subtype { get { return 0x02; } }
 
-		public uint Length {
+		public override uint Length {
 			get {
 				return
 					PreferredProtocol.SerialisationLength()
@@ -29,11 +29,11 @@ namespace WorldSalt.Network.Payloads.Connection {
 			SupportedProtocols = supportedProtocols.ToList();
 		}
 
-		public void SetBytes(byte[] bytes) {
+		public override void SetBytes(byte[] bytes) {
 			UInt64 preferredProtocol;
 			IList<UInt64> supportedProtocols;
 
-			new MemoryStream(bytes)
+			MakeDirectedByteStream(bytes)
 				.Deserialise(out preferredProtocol)
 				.Deserialise(out supportedProtocols, Deserialisation.Deserialise)
 				.AssertEnd();
@@ -42,7 +42,7 @@ namespace WorldSalt.Network.Payloads.Connection {
 			SupportedProtocols = supportedProtocols;
 		}
 
-		public byte[] GetBytes() {
+		public override byte[] GetBytes() {
 			return PreferredProtocol.Serialise()
 				.Concat(SupportedProtocols.Serialise(Serialisation.Serialise))
 				.ConcatenateBuffers();

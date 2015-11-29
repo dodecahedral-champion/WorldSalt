@@ -5,23 +5,23 @@ namespace WorldSalt.Network.Streams {
 	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.SerialisationExtensions;
+	using WorldSalt.Network.Streams.Bytes;
 
 	public class FrameStream<TConsumeDirection, TProduceDirection> : IStreamDuplex<ITypedFrame<TConsumeDirection>, ITypedFrame<TProduceDirection>> where TConsumeDirection : IDirection where TProduceDirection : IDirection {
-		TcpClient socket;
-		NetworkStream stream;
-		IFrameFactory<TProduceDirection> frameFactory;
-		IPayloadFactory<TProduceDirection> payloadFactory;
+		private IByteSource<TProduceDirection> byteSource;
+		private IByteSink<TConsumeDirection> byteSink;
+		private IFrameFactory<TProduceDirection> frameFactory;
+		private IPayloadFactory<TProduceDirection> payloadFactory;
 
-		public FrameStream(TcpClient socket, IFrameFactory<TProduceDirection> frameFactory, IPayloadFactory<TProduceDirection> payloadFactory) {
-			this.socket = socket;
-			this.stream = socket.GetStream();
+		public FrameStream(IByteSource<TProduceDirection> byteSource, IByteSink<TConsumeDirection> byteSink, IFrameFactory<TProduceDirection> frameFactory, IPayloadFactory<TProduceDirection> payloadFactory) {
+			this.byteSource = byteSource;
+			this.byteSink = byteSink;
 			this.frameFactory = frameFactory;
 			this.payloadFactory = payloadFactory;
 		}
 
 		public void Dispose() {
 			Close();
-			stream.Dispose();
 		}
 
 		public ITypedFrame<TProduceDirection> Take() {
@@ -31,12 +31,10 @@ namespace WorldSalt.Network.Streams {
 		}
 
 		public void Put(ITypedFrame<TConsumeDirection> value) {
-			var wireFormat = value.GetBytes();
-			stream.Write(wireFormat, 0, wireFormat.Length);
+			byteSink.Put(value.GetBytes());
 		}
 
 		public void Close() {
-			socket.Close();
 		}
 
 		private IUntypedFrame<TProduceDirection> TakeRaw() {
@@ -44,7 +42,7 @@ namespace WorldSalt.Network.Streams {
 			Byte type;
 			Byte subtype;
 			Byte[] payloadBytes;
-			stream
+			byteSource
 				.Deserialise(out length)
 				.Deserialise(out type)
 				.Deserialise(out subtype)

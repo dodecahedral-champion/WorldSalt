@@ -3,6 +3,7 @@ namespace WorldSalt.Network.SerialisationExtensions {
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+	using CountSpecifier = System.UInt32;
 
 	public static class Serialisation {
 		public delegate IEnumerable<Byte[]> Serialiser<T>(T self);

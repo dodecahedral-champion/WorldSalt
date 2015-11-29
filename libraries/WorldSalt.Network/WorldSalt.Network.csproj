@@ -65,9 +65,16 @@
     <Compile Include="SerialisationExtensions\LengthCalculation.cs" />
     <Compile Include="SerialisationExtensions\Serialisation.cs" />
     <Compile Include="SerialisationExtensions\Deserialisation.cs" />
-    <Compile Include="Streams\Bytes\IByteStreamProducer.cs" />
-    <Compile Include="Streams\Bytes\IByteStreamConsumer.cs" />
-    <Compile Include="Streams\Bytes\TcpStream.cs" />
+    <Compile Include="Streams\Bytes\ByteProducerStreamWrapper.cs" />
+    <Compile Include="Streams\Bytes\ByteConsumerStreamWrapper.cs" />
+    <Compile Include="Streams\Bytes\CloseableStreamWrapper.cs" />
+    <Compile Include="Streams\Bytes\IByteSource.cs" />
+    <Compile Include="Streams\Bytes\IByteSink.cs" />
+    <Compile Include="Streams\Bytes\IByteDuplex.cs" />
+    <Compile Include="Streams\Bytes\ByteArrayStream.cs" />
+    <Compile Include="Payloads\BaseTypedPayload.cs" />
+    <Compile Include="Streams\Bytes\TcpByteSource.cs" />
+    <Compile Include="Streams\Bytes\TcpByteSink.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
