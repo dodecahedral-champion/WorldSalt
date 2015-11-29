@@ -1,6 +1,7 @@
 namespace WorldSalt.Network.Packets.Connection {
 	using System;
 	using System.Collections.Generic;
+	using System.Linq;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Serialisation;
 
@@ -18,10 +19,13 @@ namespace WorldSalt.Network.Packets.Connection {
 		public UInt64 PreferredProtocol { get; private set; }
 		public IList<UInt64> SupportedProtocols { get; private set; }
 
-		public ConnectPayload() {
-			Username = "";
-			PreferredProtocol = ProtocolVersion.CURRENT;
-			SupportedProtocols = new List<UInt64> { ProtocolVersion.CURRENT };
+		public ConnectPayload() : this("", ProtocolVersion.CURRENT, Enumerable.Empty<UInt64>()) {
+		}
+
+		public ConnectPayload(string username, UInt64 preferredProtocol, IEnumerable<UInt64> supportedProtocols) {
+			Username = username;
+			PreferredProtocol = preferredProtocol;
+			SupportedProtocols = supportedProtocols.ToList();
 		}
 
 		public void SetBytes(byte[] bytes) {
@@ -41,7 +45,10 @@ namespace WorldSalt.Network.Packets.Connection {
 		}
 
 		public byte[] GetBytes() {
-			throw new NotImplementedException();
+			return Username.Serialise()
+				.Concat(PreferredProtocol.Serialise())
+				.Concat(SupportedProtocols.Serialise(SerialisationHelper.Serialise))
+				.ConcatenateBuffers();
 		}
 	}
 }

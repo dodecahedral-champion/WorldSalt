@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Packets\UntypedPacketUnitTest.cs" />
+    <Compile Include="Packets\Connection\ConnectPayloadUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -50,5 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Packets\" />
+    <Folder Include="Packets\Connection\" />
   </ItemGroup>
 </Project>

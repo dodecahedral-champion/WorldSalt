@@ -2,17 +2,43 @@ namespace WorldSalt.Network.Serialisation {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+	using System.Text;
 	using Index = System.UInt64;
 
 	public static class SerialisationHelper {
 		public delegate Index Loader<T>(Byte[] bytes, Index startIndex, out T value);
+		public delegate IEnumerable<Byte[]> Serialiser<T>(T self);
+
+		public static IEnumerable<Byte[]> Serialise(this string self) {
+			if(string.IsNullOrEmpty(self)) {
+				return ((UInt64)0).Serialise();
+			}
+
+			var length = (UInt64)self.Length;
+			var stringBytes = Encoding.UTF8.GetBytes(self);
+			return length.Serialise().Concat(new[] { stringBytes });
+		}
+
+		public static IEnumerable<Byte[]> Serialise(this UInt64 self) {
+			return Enumerable.Repeat(SerialiseUnsignedInteger(self, 8).ToArray(), 1);
+		}
+
+		public static IEnumerable<Byte[]> Serialise<T>(this IEnumerable<T> self, Serialiser<T> itemSerialiser) {
+			if(self == null) {
+				return ((UInt64)0).Serialise();
+			}
+
+			var fragments = self.Select(x => itemSerialiser(x)).ToList();
+			var length = (UInt64)fragments.LongCount();
+			return length.Serialise().Concat(fragments.SelectMany(x => x));
+		}
 
 		public static Index LoadString(Byte[] bytes, Index startIndex, out string value) {
 			UInt64 length;
 			var index = LoadU64(bytes, startIndex, out length);
 			Byte[] stringBytes;
 			index = ReadByteSequence(bytes, index, out stringBytes, length);
-			value = System.Text.Encoding.UTF8.GetString(stringBytes);
+			value = Encoding.UTF8.GetString(stringBytes);
 			return index;
 		}
 
@@ -31,6 +57,19 @@ namespace WorldSalt.Network.Serialisation {
 			if(bytesRemaining != 0) {
 				throw new FormatException(string.Format("expected end of buffer: bytes remaining = {0}", bytesRemaining));
 			}
+		}
+
+		public static Byte[] ConcatenateBuffers(this IEnumerable<Byte[]> buffers) {
+			var buffersList = buffers.ToList();
+			var totalLength = buffersList.Aggregate((long)0, (len, buffer) => len + buffer.LongLength);
+			var combinedBuffer = new Byte[totalLength];
+			long offset = 0;
+			foreach(var buffer in buffersList) {
+				buffer.CopyTo(combinedBuffer, offset);
+				offset += buffer.LongLength;
+			}
+
+			return combinedBuffer;
 		}
 
 		private static Index ReadByteSequence(Byte[] bytes, Index startIndex, out Byte[] sequence, UInt64 numBytes) {
@@ -70,6 +109,14 @@ namespace WorldSalt.Network.Serialisation {
 
 			value = sequence.Reverse().Aggregate((UInt64)0, (working, b) => working * 256 + b);
 			return index;
+		}
+
+		private static IEnumerable<Byte> SerialiseUnsignedInteger(UInt64 value, UInt16 integerSizeBytes) {
+			foreach(var i in Enumerable.Range(0, integerSizeBytes)) {
+				var b = (Byte)(value % 256);
+				yield return b;
+				value = (value - b) / 256;
+			}
 		}
 	}
 }

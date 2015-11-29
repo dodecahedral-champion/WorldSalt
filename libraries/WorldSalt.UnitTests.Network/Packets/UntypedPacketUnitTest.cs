@@ -28,7 +28,7 @@ namespace WorldSalt.UnitTests.Network.Packets {
 			Assert.IsNotNull(converted);
 			Assert.AreEqual("foo", converted.Payload.Username);
 			Assert.AreEqual(42, converted.Payload.PreferredProtocol);
-			CollectionAssert.AreEqual(new List<ulong> { 39, 40, 41 }, converted.Payload.SupportedProtocols);
+			CollectionAssert.AreEqual(new[] { 39, 40, 41 }, converted.Payload.SupportedProtocols);
 		}
 	}
 }
