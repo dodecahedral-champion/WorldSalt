@@ -4,7 +4,7 @@ namespace WorldSalt.Network.Packets.Connection {
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.SerialisationExtensions;
 
-	public class KickedPayload : ITypedPayload<FromClient> {
+	public class KickedPayload : ITypedPayload<FromServer> {
 		public byte Type { get { return 0x00; } }
 		public byte Subtype { get { return 0x04; } }
 

@@ -7,7 +7,7 @@ namespace WorldSalt.Network.Packets.Connection {
 	using WorldSalt.Network.Packets;
 	using WorldSalt.Network.SerialisationExtensions;
 
-	public class UnsupportedProtocolVersionPayload : ITypedPayload<FromClient> {
+	public class UnsupportedProtocolVersionPayload : ITypedPayload<FromServer> {
 		public byte Type { get { return 0x00; } }
 		public byte Subtype { get { return 0x02; } }
 
