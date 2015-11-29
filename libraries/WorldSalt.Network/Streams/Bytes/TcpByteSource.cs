@@ -10,13 +10,9 @@ namespace WorldSalt.Network.Streams.Bytes {
 			this.socket = socket;
 		}
 
-		public void Dispose() {
-			underlying.Close();
-			underlying.Dispose();
-		}
-
-		public void Close() {
+		public new void Close() {
 			socket.Close();
+			base.Close();
 		}
 	}
 }

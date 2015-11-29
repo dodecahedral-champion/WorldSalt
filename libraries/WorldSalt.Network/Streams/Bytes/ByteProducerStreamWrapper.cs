@@ -23,6 +23,15 @@ namespace WorldSalt.Network.Streams.Bytes {
 			this.underlying = underlying;
 		}
 
+		public void Dispose() {
+			underlying.Close();
+			underlying.Dispose();
+		}
+
+		public void Close() {
+			underlying.Close();
+		}
+
 		public byte Read() {
 			var value = underlying.ReadByte();
 			if(value < 0) {

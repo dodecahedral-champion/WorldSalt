@@ -9,6 +9,15 @@ namespace WorldSalt.Network.Streams.Bytes {
 			this.underlying = underlying;
 		}
 
+		public void Dispose() {
+			underlying.Close();
+			underlying.Dispose();
+		}
+
+		public void Close() {
+			underlying.Close();
+		}
+
 		public void Put(byte item) {
 			underlying.WriteByte(item);
 		}

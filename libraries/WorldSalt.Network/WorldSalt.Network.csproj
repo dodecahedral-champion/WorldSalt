@@ -75,6 +75,10 @@
     <Compile Include="Payloads\BaseTypedPayload.cs" />
     <Compile Include="Streams\Bytes\TcpByteSource.cs" />
     <Compile Include="Streams\Bytes\TcpByteSink.cs" />
+    <Compile Include="Streams\FrameSource.cs" />
+    <Compile Include="Streams\FrameSink.cs" />
+    <Compile Include="Streams\RawFrameSource.cs" />
+    <Compile Include="Streams\IRawFrameSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

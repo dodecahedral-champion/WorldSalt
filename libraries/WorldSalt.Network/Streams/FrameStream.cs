@@ -22,6 +22,8 @@ namespace WorldSalt.Network.Streams {
 
 		public void Dispose() {
 			Close();
+			byteSource.Dispose();
+			byteSink.Dispose();
 		}
 
 		public ITypedFrame<TProduceDirection> Take() {
@@ -35,6 +37,8 @@ namespace WorldSalt.Network.Streams {
 		}
 
 		public void Close() {
+			byteSource.Close();
+			byteSink.Close();
 		}
 
 		private IUntypedFrame<TProduceDirection> TakeRaw() {

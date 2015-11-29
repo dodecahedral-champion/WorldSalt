@@ -2,7 +2,7 @@ namespace WorldSalt.Network.Streams.Bytes {
 	using System;
 	using WorldSalt.Network.Direction;
 
-	public interface IByteSource<TDirection> where TDirection : IDirection {
+	public interface IByteSource<TDirection> : IStreamCloseable where TDirection : IDirection {
 		bool IsAtEnd { get; }
 
 		byte Read();

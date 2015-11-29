@@ -50,6 +50,9 @@
     <Compile Include="Frames\UntypedFrameUnitTest.cs" />
     <Compile Include="Payloads\PayloadTypeVerification.cs" />
     <Compile Include="Frames\FrameUnitTest.cs" />
+    <Compile Include="Streams\FrameSinkUnitTest.cs" />
+    <Compile Include="Streams\FrameSourceUnitTest.cs" />
+    <Compile Include="Streams\RawFrameSourceUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
