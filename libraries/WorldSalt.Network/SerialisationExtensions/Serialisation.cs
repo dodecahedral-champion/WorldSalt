@@ -7,6 +7,14 @@ namespace WorldSalt.Network.SerialisationExtensions {
 	public static class Serialisation {
 		public delegate IEnumerable<Byte[]> Serialiser<T>(T self);
 
+		public static IEnumerable<Byte[]> Serialise(this Byte self) {
+			return Enumerable.Repeat(new Byte[1] { self }, 1);
+		}
+
+		public static IEnumerable<Byte[]> Serialise(this Byte[] self) {
+			return Enumerable.Repeat(self, 1);
+		}
+
 		public static IEnumerable<Byte[]> Serialise(this string self) {
 			if(string.IsNullOrEmpty(self)) {
 				return ((UInt32)0).Serialise();

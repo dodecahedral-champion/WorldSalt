@@ -1,14 +1,22 @@
 namespace WorldSalt.Client.RefStub {
+	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using WorldSalt.Network;
+	using WorldSalt.Network.Direction;
+	using WorldSalt.Network.Packets;
 
 	public class MainClass {
 		private static int DEFAULT_PORT = 1117;
 
 		public static void Main(string[] args) {
-			var client = new ClientProcess(new PacketStreamFactory(), GetHostname(args), GetPort(args));
-			client.Run();
+			var hostname = GetHostname(args);
+			var port = GetPort(args);
+			Console.WriteLine("[client] connecting to {0}:{1}", hostname, port);
+			var packetFactory = new PacketFactory<FromClient>(new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient()));
+			var client = new ClientProcess(packetFactory, new PacketStreamFactory(), hostname, port);
+			client.Connect("GreyKnight", ProtocolVersion.CURRENT);
+			Console.WriteLine("[client] done.");
 		}
 
 		private static string GetHostname(IEnumerable<string> args) {

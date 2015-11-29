@@ -2,10 +2,17 @@ namespace WorldSalt.Network.Packets {
 	using WorldSalt.Network.Direction;
 
 	public class UntypedPacket<TDirection> : IUntypedPacket<TDirection> where TDirection : IDirection {
+		public byte Type { get; private set; }
+		public byte Subtype { get; private set; }
 		public IRawPayload<TDirection> Payload { get; private set; }
 
-		public UntypedPacket() {
-			Payload = new UntypedPayload<TDirection>();
+		public UntypedPacket() : this(0x00, 0x00, new UntypedPayload<TDirection>()) {
+		}
+
+		public UntypedPacket(byte type, byte subtype, IRawPayload<TDirection> payload) {
+			Type = type;
+			Subtype = subtype;
+			Payload = payload;
 		}
 	}
 }

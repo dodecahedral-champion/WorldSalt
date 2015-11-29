@@ -11,4 +11,3 @@ namespace WorldSalt.UnitTests.Network.Packets {
 	public class UntypedPacketUnitTest {
 	}
 }
-

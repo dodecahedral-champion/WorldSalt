@@ -58,6 +58,12 @@
     <Compile Include="Packets\Connection\KickedPayload.cs" />
     <Compile Include="Packets\IPacketFactory.cs" />
     <Compile Include="Packets\PacketFactory.cs" />
+    <Compile Include="Streams\PacketStream.cs" />
+    <Compile Include="Packets\IPayloadFactory.cs" />
+    <Compile Include="Packets\PayloadFactory.cs" />
+    <Compile Include="Packets\IPayloadTypedCreator.cs" />
+    <Compile Include="Packets\PayloadTypedCreatorFromServer.cs" />
+    <Compile Include="Packets\PayloadTypedCreatorFromClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -65,5 +71,6 @@
     <Folder Include="Packets\Connection\" />
     <Folder Include="Direction\" />
     <Folder Include="SerialisationExtensions\" />
+    <Folder Include="Streams\" />
   </ItemGroup>
 </Project>

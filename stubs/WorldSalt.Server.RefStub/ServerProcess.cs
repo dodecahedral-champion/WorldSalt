@@ -21,7 +21,18 @@ namespace WorldSalt.Server.RefStub {
 		}
 
 		private void RunClientHandlerInNewTask(IClientHandler clientHandler) {
-			clients.Add(Task.Factory.StartNew(clientHandler.Run));
+			clients.Add(Task.Factory.StartNew(() => RunClientHandler(clientHandler)));
+		}
+
+		private void RunClientHandler(IClientHandler clientHandler) {
+			try {
+				Console.WriteLine("[server] client start");
+				clientHandler.Run();
+			} catch(Exception e) {
+				Console.WriteLine("[server] client error: {0}", e);
+			} finally {
+				Console.WriteLine("[server] client stop");
+			}
 		}
 
 		private void CleanUpDisconnectedClients() {

@@ -1,4 +1,5 @@
 namespace WorldSalt.Network.Packets {
+	using System;
 	using WorldSalt.Network.Direction;
 
 	public interface IPacketFactory<TDirection> where TDirection : IDirection {
@@ -6,6 +7,6 @@ namespace WorldSalt.Network.Packets {
 
 		ITypedPacket<TPayload, TDirection> Create<TPayload>(IUntypedPacket<TDirection> untypedPacket) where TPayload : ITypedPayload<TDirection>, new();
 
-		TPayload ConvertPayload<TPayload>(IRawPayload<TDirection> untypedPayload) where TPayload : ITypedPayload<TDirection>, new();
+		IUntypedPacket<TDirection> CreateUntyped(Byte type, Byte subtype, IRawPayload<TDirection> payload);
 	}
 }

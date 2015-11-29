@@ -8,6 +8,16 @@ namespace WorldSalt.Network.SerialisationExtensions {
 	public static class Deserialisation {
 		public delegate Stream Deserialiser<T>(Stream stream, out T value);
 
+		public static Stream Deserialise(this Stream stream, out Byte[] value, UInt32 sequenceLength) {
+			value = stream.ReadByteSequence(sequenceLength);
+			return stream;
+		}
+
+		public static Stream Deserialise(this Stream stream, out Byte value) {
+			value = (byte)stream.ReadByte();
+			return stream;
+		}
+
 		public static Stream Deserialise(this Stream stream, out string value) {
 			UInt32 length;
 			stream = stream.Deserialise(out length);

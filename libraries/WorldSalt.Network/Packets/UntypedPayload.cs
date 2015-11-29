@@ -5,8 +5,11 @@ namespace WorldSalt.Network.Packets {
 			get { return (uint)rawBuffer.Length; }
 		}
 
-		public UntypedPayload() {
-			rawBuffer = new byte[0];
+		public UntypedPayload() : this(new byte[0]) {
+		}
+
+		public UntypedPayload(byte[] bytes) {
+			rawBuffer = bytes;
 		}
 
 		public void SetBytes(byte[] bytes) {

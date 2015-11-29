@@ -10,17 +10,29 @@ namespace WorldSalt.Client.RefStub {
 
 	public class ClientProcess {
 		private IStreamDuplex<ITypedPacket<FromClient>, ITypedPacket<FromServer>> stream;
-		public ClientProcess(IPacketStreamFactory packetStreamFactory, string hostname, int port) {
+		private IPacketFactory<FromClient> packetFactory;
+		public ClientProcess(IPacketFactory<FromClient> packetFactory, IPacketStreamFactory packetStreamFactory, string hostname, int port) {
 			stream = packetStreamFactory.CreateDuplexForClient(new TcpClient(hostname, port));
+			this.packetFactory = packetFactory;
 		}
 
-		public void Run() {
-			Connect("GreyKnight", ProtocolVersion.CURRENT);
-		}
+		public void Connect(string username, UInt64 protocolVersion) {
+			Console.WriteLine("[client] connecting...");
+			stream.Put(packetFactory.Create(new ConnectPayload(username, protocolVersion, Enumerable.Empty<UInt64>())));
+			var connectResponse = stream.Take();
+			if(connectResponse.Payload as ConnectedPayload != null) {
+				Console.WriteLine("[client] connected okay!");
+				return;
+			} else {
+				var rejected = connectResponse.Payload as UnsupportedProtocolVersionPayload;
+				var message = string.Format("preferred protocol {0}", rejected.PreferredProtocol);
+				if (rejected.SupportedProtocols.Any()) {
+					message = string.Format("{0} (or any of: {1})", message, string.Join(",", rejected.SupportedProtocols.Select(x => x.ToString())));
+				}
+				Console.WriteLine("[client] rejected: {0}", message);
 
-		private void Connect(string username, UInt64 protocolVersion) {
-			var connectPacket = new Packet<ConnectPayload, FromClient>(new ConnectPayload(username, protocolVersion, Enumerable.Empty<UInt64>()));
-			stream.Put(connectPacket);
+				throw new InvalidOperationException(message);
+			}
 		}
 	}
 }

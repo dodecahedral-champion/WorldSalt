@@ -1,4 +1,5 @@
 namespace WorldSalt.Server.RefStub.Connections {
+	using System;
 	using System.Net;
 	using System.Net.Sockets;
 
@@ -17,7 +18,9 @@ namespace WorldSalt.Server.RefStub.Connections {
 		}
 
 		public IClientHandler AcceptOne() {
-			return clientHandlerFactory.Create(listener.AcceptTcpClient());
+			var socket = listener.AcceptTcpClient();
+			Console.WriteLine("[server] met new client");
+			return clientHandlerFactory.Create(socket);
 		}
 	}
 }

@@ -4,15 +4,18 @@ namespace WorldSalt.Server.RefStub {
 	using System.Linq;
 	using System.Threading;
 	using WorldSalt.Network;
+	using WorldSalt.Network.Direction;
+	using WorldSalt.Network.Packets;
 	using WorldSalt.Server.RefStub.Connections;
 
 	public class MainClass {
 		private static int DEFAULT_PORT = 1117;
 
 		public static void Main(string[] args) {
-			var clientHandlerFactory = new ClientHandlerFactory(new PacketStreamFactory());
+			var packetFactory = new PacketFactory<FromServer>(new PayloadFactory<FromServer>(new PayloadTypedCreatorFromServer()));
+			var clientHandlerFactory = new ClientHandlerFactory(packetFactory, new PacketStreamFactory());
 			var port = GetPort(args);
-			Console.WriteLine("listening on port {0}...", port);
+			Console.WriteLine("[server] listening on port {0}...", port);
 			using (var connectionFoyer = new ConnectionFoyer(clientHandlerFactory, port)) {
 				var server = new ServerProcess(connectionFoyer);
 				while (true) {

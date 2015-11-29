@@ -5,11 +5,15 @@ namespace WorldSalt.Network {
 
 	public class PacketStreamFactory : IPacketStreamFactory {
 		public IStreamDuplex<ITypedPacket<FromServer>, ITypedPacket<FromClient>> CreateDuplexForServer(TcpClient socket) {
-			throw new System.NotImplementedException();
+			var payloadFactory = new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient());
+			var packetFactory = new PacketFactory<FromClient>(payloadFactory);
+			return new PacketStream<FromServer, FromClient>(socket, packetFactory, payloadFactory);
 		}
 
 		public IStreamDuplex<ITypedPacket<FromClient>, ITypedPacket<FromServer>> CreateDuplexForClient(TcpClient socket) {
-			throw new System.NotImplementedException();
+			var payloadFactory = new PayloadFactory<FromServer>(new PayloadTypedCreatorFromServer());
+			var packetFactory = new PacketFactory<FromServer>(payloadFactory);
+			return new PacketStream<FromClient, FromServer>(socket, packetFactory, payloadFactory);
 		}
 	}
 }
