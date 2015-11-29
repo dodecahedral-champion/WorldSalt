@@ -8,12 +8,17 @@ namespace WorldSalt.Client.RefStub {
 	using WorldSalt.Network.Payloads.Connection;
 	using WorldSalt.Network.Streams;
 
-	public class ClientProcess {
+	public class ClientProcess : IDisposable {
 		private IStreamDuplex<ITypedFrame<FromClient>, ITypedFrame<FromServer>> stream;
 		private IFrameFactory<FromClient> frameFactory;
 		public ClientProcess(IFrameFactory<FromClient> frameFactory, IFrameStreamFactory streamFactory, string hostname, int port) {
 			stream = streamFactory.CreateDuplexForClient(new TcpClient(hostname, port));
 			this.frameFactory = frameFactory;
+		}
+
+		public void Dispose() {
+			stream.Close();
+			stream.Dispose();
 		}
 
 		public void Connect(string username, UInt64 protocolVersion) {

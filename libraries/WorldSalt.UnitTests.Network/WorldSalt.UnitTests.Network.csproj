@@ -37,6 +37,7 @@
       <Private>False</Private>
       <Package>rhino-mocks</Package>
     </Reference>
+    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Payloads\PayloadFactoryUnitTest.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Frames\UntypedFrameUnitTest.cs" />
     <Compile Include="Payloads\PayloadTypeVerification.cs" />
     <Compile Include="Frames\FrameUnitTest.cs" />
+    <Compile Include="Streams\Bytes\TcpStreamUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -60,5 +62,7 @@
   <ItemGroup>
     <Folder Include="Frames\" />
     <Folder Include="Payloads\" />
+    <Folder Include="Streams\" />
+    <Folder Include="Streams\Bytes\" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
 namespace WorldSalt.Network.Streams {
-	public interface IStreamCloseable {
+	using System;
+
+	public interface IStreamCloseable : IDisposable {
 		void Close();
 	}
 }

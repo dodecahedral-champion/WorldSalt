@@ -65,6 +65,9 @@
     <Compile Include="SerialisationExtensions\LengthCalculation.cs" />
     <Compile Include="SerialisationExtensions\Serialisation.cs" />
     <Compile Include="SerialisationExtensions\Deserialisation.cs" />
+    <Compile Include="Streams\Bytes\IByteStreamProducer.cs" />
+    <Compile Include="Streams\Bytes\IByteStreamConsumer.cs" />
+    <Compile Include="Streams\Bytes\TcpStream.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -73,5 +76,6 @@
     <Folder Include="Streams\" />
     <Folder Include="Payloads\" />
     <Folder Include="Frames\" />
+    <Folder Include="Streams\Bytes\" />
   </ItemGroup>
 </Project>

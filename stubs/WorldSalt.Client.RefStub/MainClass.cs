@@ -16,9 +16,11 @@ namespace WorldSalt.Client.RefStub {
 			var port = GetPort(args);
 			Console.WriteLine("[client] connecting to {0}:{1}", hostname, port);
 			var frameFactory = new FrameFactory<FromClient>(new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient()));
-			var client = new ClientProcess(frameFactory, new FrameStreamFactory(), hostname, port);
-			client.Connect("GreyKnight", ProtocolVersion.CURRENT);
-			client.Disconnect();
+			using (var client = new ClientProcess(frameFactory, new FrameStreamFactory(), hostname, port)) {
+				client.Connect("Fred", ProtocolVersion.CURRENT);
+				client.Disconnect();
+			}
+
 			Console.WriteLine("[client] done.");
 		}
 

@@ -19,6 +19,11 @@ namespace WorldSalt.Network.Streams {
 			this.payloadFactory = payloadFactory;
 		}
 
+		public void Dispose() {
+			Close();
+			stream.Dispose();
+		}
+
 		public ITypedFrame<TProduceDirection> Take() {
 			IUntypedFrame<TProduceDirection> rawFrame = TakeRaw();
 			var typedPayload = payloadFactory.ConvertPayload(rawFrame.Payload, rawFrame.Type, rawFrame.Subtype);

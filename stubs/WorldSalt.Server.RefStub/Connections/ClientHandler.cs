@@ -21,6 +21,11 @@ namespace WorldSalt.Server.RefStub.Connections {
 			username = Guid.NewGuid().ToString();
 		}
 
+		public void Dispose() {
+			stream.Close();
+			stream.Dispose();
+		}
+
 		public void Run() {
 			var connectFrame = stream.Take();
 			var connectPayload = connectFrame.Payload as ConnectPayload;

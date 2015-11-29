@@ -32,6 +32,7 @@ namespace WorldSalt.Server.RefStub {
 				Console.WriteLine("[server] client error: {0}", e);
 			} finally {
 				Console.WriteLine("[server] client stop");
+				clientHandler.Dispose();
 			}
 		}
 

@@ -1,7 +1,7 @@
 namespace WorldSalt.Server.RefStub.Connections {
 	using System;
 
-	public interface IClientHandler {
+	public interface IClientHandler : IDisposable {
 		void Run();
 	}
 }
