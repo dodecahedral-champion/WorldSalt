@@ -3,7 +3,7 @@ namespace WorldSalt.Network.Packets.Connection {
 	using System.IO;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Packets;
-	using WorldSalt.Network.Serialisation;
+	using WorldSalt.Network.SerialisationExtensions;
 
 	public class ConnectedPayload : ITypedPayload<FromServer> {
 		public byte Type { get { return 0x00; } }

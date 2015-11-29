@@ -1,4 +1,4 @@
-namespace WorldSalt.Network.Serialisation {
+namespace WorldSalt.Network.SerialisationExtensions {
 	using System;
 	using System.Collections.Generic;
 	using System.IO;

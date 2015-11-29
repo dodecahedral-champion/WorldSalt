@@ -50,16 +50,16 @@
     <Compile Include="Direction\FromServer.cs" />
     <Compile Include="ProtocolVersion.cs" />
     <Compile Include="Packets\Connection\ConnectedPayload.cs" />
-    <Compile Include="Serialisation\LengthCalculation.cs" />
-    <Compile Include="Serialisation\Serialisation.cs" />
-    <Compile Include="Serialisation\Deserialisation.cs" />
+    <Compile Include="Packets\Connection\UnsupportedProtocolVersionPayload.cs" />
+    <Compile Include="SerialisationExtensions\LengthCalculation.cs" />
+    <Compile Include="SerialisationExtensions\Serialisation.cs" />
+    <Compile Include="SerialisationExtensions\Deserialisation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Packets\" />
     <Folder Include="Packets\Connection\" />
     <Folder Include="Direction\" />
-    <Folder Include="ProtocolVersion\" />
-    <Folder Include="Serialisation\" />
+    <Folder Include="SerialisationExtensions\" />
   </ItemGroup>
 </Project>

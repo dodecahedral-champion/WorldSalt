@@ -42,6 +42,7 @@
     <Compile Include="Packets\UntypedPacketUnitTest.cs" />
     <Compile Include="Packets\Connection\ConnectPayloadUnitTest.cs" />
     <Compile Include="Packets\Connection\ConnectedPayloadUnitTest.cs" />
+    <Compile Include="Packets\Connection\UnsupportedProtocolVersionPayloadUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
