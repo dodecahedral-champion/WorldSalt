@@ -17,6 +17,7 @@ namespace WorldSalt.Client.RefStub {
 			var packetFactory = new PacketFactory<FromClient>(new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient()));
 			var client = new ClientProcess(packetFactory, new PacketStreamFactory(), hostname, port);
 			client.Connect("GreyKnight", ProtocolVersion.CURRENT);
+			client.Disconnect();
 			Console.WriteLine("[client] done.");
 		}
 

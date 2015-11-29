@@ -20,19 +20,31 @@ namespace WorldSalt.Client.RefStub {
 			Console.WriteLine("[client] connecting...");
 			stream.Put(packetFactory.Create(new ConnectPayload(username, protocolVersion, Enumerable.Empty<UInt64>())));
 			var connectResponse = stream.Take();
+			CheckForUnsupportedVersion(connectResponse.Payload as UnsupportedProtocolVersionPayload);
 			if(connectResponse.Payload as ConnectedPayload != null) {
 				Console.WriteLine("[client] connected okay!");
 				return;
-			} else {
-				var rejected = connectResponse.Payload as UnsupportedProtocolVersionPayload;
-				var message = string.Format("preferred protocol {0}", rejected.PreferredProtocol);
-				if (rejected.SupportedProtocols.Any()) {
-					message = string.Format("{0} (or any of: {1})", message, string.Join(",", rejected.SupportedProtocols.Select(x => x.ToString())));
-				}
-				Console.WriteLine("[client] rejected: {0}", message);
-
-				throw new InvalidOperationException(message);
 			}
+		}
+
+		public void Disconnect() {
+			Console.WriteLine("[client] disconnecting.");
+			stream.Put(packetFactory.Create(new DisconnectPayload()));
+			stream.Close();
+		}
+
+		private void CheckForUnsupportedVersion(UnsupportedProtocolVersionPayload payload) {
+			if(payload == null) {
+				return;
+			}
+
+			var message = string.Format("preferred protocol {0}", payload.PreferredProtocol);
+			if (payload.SupportedProtocols.Any()) {
+				message = string.Format("{0} (or any of: {1})", message, string.Join(",", payload.SupportedProtocols.Select(x => x.ToString())));
+			}
+			Console.WriteLine("[client] rejected: {0}", message);
+
+			throw new InvalidOperationException(message);
 		}
 	}
 }
