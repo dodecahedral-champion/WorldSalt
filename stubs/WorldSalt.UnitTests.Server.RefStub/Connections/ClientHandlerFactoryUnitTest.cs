@@ -5,7 +5,7 @@ namespace WorldSalt.UnitTests.Server.RefStub.Connections {
 	using Rhino.Mocks;
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Packets;
+	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Streams;
 	using WorldSalt.Server.RefStub;
 	using WorldSalt.Server.RefStub.Connections;
@@ -13,26 +13,26 @@ namespace WorldSalt.UnitTests.Server.RefStub.Connections {
 	[TestFixture]
 	public class ClientHandlerFactoryUnitTest {
 		private ClientHandlerFactory target;
-		private IPacketFactory<FromServer> packetFactory;
-		private IPacketStreamFactory packetStreamFactory;
+		private IFrameFactory<FromServer> frameFactory;
+		private IFrameStreamFactory streamFactory;
 
 		[SetUp]
 		public void Setup() {
-			packetFactory = MockRepository.GenerateMock<IPacketFactory<FromServer>>();
-			packetStreamFactory = MockRepository.GenerateMock<IPacketStreamFactory>();
+			frameFactory = MockRepository.GenerateMock<IFrameFactory<FromServer>>();
+			streamFactory = MockRepository.GenerateMock<IFrameStreamFactory>();
 
-			target = new ClientHandlerFactory(packetFactory, packetStreamFactory);
+			target = new ClientHandlerFactory(frameFactory, streamFactory);
 		}
 
 		[Test]
-		public void ShouldCreatePacketStreamWhenCreatingClientHandler() {
+		public void ShouldCreateStreamWhenCreatingClientHandler() {
 			var socket = new TcpClient();
-			packetStreamFactory.Expect(x => x.CreateDuplexForServer(socket));
+			streamFactory.Expect(x => x.CreateDuplexForServer(socket));
 
 			var clientHandler = target.Create(socket);
 
 			Assert.IsNotNull(clientHandler);
-			packetStreamFactory.VerifyAllExpectations();
+			streamFactory.VerifyAllExpectations();
 		}
 	}
 }

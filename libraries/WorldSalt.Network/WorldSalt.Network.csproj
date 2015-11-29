@@ -34,44 +34,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Packets\IPacket.cs" />
-    <Compile Include="Packets\IPayload.cs" />
-    <Compile Include="Packets\Connection\ConnectPayload.cs" />
-    <Compile Include="Packets\UntypedPayload.cs" />
-    <Compile Include="Packets\UntypedPacket.cs" />
-    <Compile Include="Packets\Packet.cs" />
-    <Compile Include="Direction\IDirection.cs" />
-    <Compile Include="Direction\FromClient.cs" />
-    <Compile Include="Direction\FromServer.cs" />
-    <Compile Include="ProtocolVersion.cs" />
-    <Compile Include="Packets\Connection\ConnectedPayload.cs" />
-    <Compile Include="Packets\Connection\UnsupportedProtocolVersionPayload.cs" />
-    <Compile Include="SerialisationExtensions\LengthCalculation.cs" />
-    <Compile Include="SerialisationExtensions\Serialisation.cs" />
-    <Compile Include="SerialisationExtensions\Deserialisation.cs" />
-    <Compile Include="Packets\Connection\DisconnectPayload.cs" />
-    <Compile Include="Packets\Connection\KickedPayload.cs" />
-    <Compile Include="Packets\IPacketFactory.cs" />
-    <Compile Include="Packets\PacketFactory.cs" />
-    <Compile Include="Streams\PacketStream.cs" />
-    <Compile Include="Packets\IPayloadFactory.cs" />
-    <Compile Include="Packets\PayloadFactory.cs" />
-    <Compile Include="Packets\IPayloadTypedCreator.cs" />
-    <Compile Include="Packets\PayloadTypedCreatorFromServer.cs" />
-    <Compile Include="Packets\PayloadTypedCreatorFromClient.cs" />
+    <Compile Include="Frames\IFrame.cs" />
+    <Compile Include="Frames\UntypedFrame.cs" />
+    <Compile Include="Frames\Frame.cs" />
+    <Compile Include="Frames\FrameFactory.cs" />
+    <Compile Include="Frames\IFrameFactory.cs" />
+    <Compile Include="Payloads\Connection\ConnectedPayload.cs" />
+    <Compile Include="Payloads\Connection\ConnectPayload.cs" />
+    <Compile Include="Payloads\Connection\DisconnectPayload.cs" />
+    <Compile Include="Payloads\Connection\KickedPayload.cs" />
+    <Compile Include="Payloads\Connection\UnsupportedProtocolVersionPayload.cs" />
+    <Compile Include="Payloads\IPayload.cs" />
+    <Compile Include="Payloads\IPayloadFactory.cs" />
+    <Compile Include="Payloads\IPayloadTypedCreator.cs" />
+    <Compile Include="Payloads\PayloadFactory.cs" />
+    <Compile Include="Payloads\PayloadTypedCreatorFromClient.cs" />
+    <Compile Include="Payloads\PayloadTypedCreatorFromServer.cs" />
+    <Compile Include="Payloads\UntypedPayload.cs" />
     <Compile Include="Streams\IStreamConsumer.cs" />
     <Compile Include="Streams\IStreamDuplex.cs" />
     <Compile Include="Streams\IStreamProducer.cs" />
     <Compile Include="Streams\IStreamCloseable.cs" />
-    <Compile Include="Streams\PacketStreamFactory.cs" />
-    <Compile Include="Streams\IPacketStreamFactory.cs" />
+    <Compile Include="Streams\FrameStream.cs" />
+    <Compile Include="Streams\FrameStreamFactory.cs" />
+    <Compile Include="Streams\IFrameStreamFactory.cs" />
+    <Compile Include="Direction\IDirection.cs" />
+    <Compile Include="Direction\FromClient.cs" />
+    <Compile Include="Direction\FromServer.cs" />
+    <Compile Include="ProtocolVersion.cs" />
+    <Compile Include="SerialisationExtensions\LengthCalculation.cs" />
+    <Compile Include="SerialisationExtensions\Serialisation.cs" />
+    <Compile Include="SerialisationExtensions\Deserialisation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Packets\" />
-    <Folder Include="Packets\Connection\" />
     <Folder Include="Direction\" />
     <Folder Include="SerialisationExtensions\" />
     <Folder Include="Streams\" />
+    <Folder Include="Payloads\" />
+    <Folder Include="Frames\" />
   </ItemGroup>
 </Project>

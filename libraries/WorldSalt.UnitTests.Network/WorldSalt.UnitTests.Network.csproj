@@ -39,15 +39,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packets\UntypedPacketUnitTest.cs" />
-    <Compile Include="Packets\Connection\ConnectPayloadUnitTest.cs" />
-    <Compile Include="Packets\Connection\ConnectedPayloadUnitTest.cs" />
-    <Compile Include="Packets\Connection\UnsupportedProtocolVersionPayloadUnitTest.cs" />
-    <Compile Include="Packets\Connection\KickedPayloadUnitTest.cs" />
-    <Compile Include="Packets\Connection\DisconnectPayloadUnitTest.cs" />
-    <Compile Include="Packets\PacketTypeVerification.cs" />
-    <Compile Include="Packets\PacketFactoryUnitTest.cs" />
-    <Compile Include="Packets\PayloadFactoryUnitTest.cs" />
+    <Compile Include="Payloads\PayloadFactoryUnitTest.cs" />
+    <Compile Include="Payloads\Connection\ConnectedPayloadUnitTest.cs" />
+    <Compile Include="Payloads\Connection\ConnectPayloadUnitTest.cs" />
+    <Compile Include="Payloads\Connection\DisconnectPayloadUnitTest.cs" />
+    <Compile Include="Payloads\Connection\KickedPayloadUnitTest.cs" />
+    <Compile Include="Payloads\Connection\UnsupportedProtocolVersionPayloadUnitTest.cs" />
+    <Compile Include="Frames\FrameFactoryUnitTest.cs" />
+    <Compile Include="Frames\UntypedFrameUnitTest.cs" />
+    <Compile Include="Payloads\PayloadTypeVerification.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -57,7 +57,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Packets\" />
-    <Folder Include="Packets\Connection\" />
+    <Folder Include="Frames\" />
+    <Folder Include="Payloads\" />
   </ItemGroup>
 </Project>

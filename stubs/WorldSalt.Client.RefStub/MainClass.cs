@@ -4,7 +4,8 @@ namespace WorldSalt.Client.RefStub {
 	using System.Linq;
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Packets;
+	using WorldSalt.Network.Frames;
+	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Streams;
 
 	public class MainClass {
@@ -14,8 +15,8 @@ namespace WorldSalt.Client.RefStub {
 			var hostname = GetHostname(args);
 			var port = GetPort(args);
 			Console.WriteLine("[client] connecting to {0}:{1}", hostname, port);
-			var packetFactory = new PacketFactory<FromClient>(new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient()));
-			var client = new ClientProcess(packetFactory, new PacketStreamFactory(), hostname, port);
+			var frameFactory = new FrameFactory<FromClient>(new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient()));
+			var client = new ClientProcess(frameFactory, new FrameStreamFactory(), hostname, port);
 			client.Connect("GreyKnight", ProtocolVersion.CURRENT);
 			client.Disconnect();
 			Console.WriteLine("[client] done.");

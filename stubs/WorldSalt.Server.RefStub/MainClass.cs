@@ -5,7 +5,8 @@ namespace WorldSalt.Server.RefStub {
 	using System.Threading;
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Packets;
+	using WorldSalt.Network.Frames;
+	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Streams;
 	using WorldSalt.Server.RefStub.Connections;
 
@@ -13,8 +14,8 @@ namespace WorldSalt.Server.RefStub {
 		private static int DEFAULT_PORT = 1117;
 
 		public static void Main(string[] args) {
-			var packetFactory = new PacketFactory<FromServer>(new PayloadFactory<FromServer>(new PayloadTypedCreatorFromServer()));
-			var clientHandlerFactory = new ClientHandlerFactory(packetFactory, new PacketStreamFactory());
+			var frameFactory = new FrameFactory<FromServer>(new PayloadFactory<FromServer>(new PayloadTypedCreatorFromServer()));
+			var clientHandlerFactory = new ClientHandlerFactory(frameFactory, new FrameStreamFactory());
 			var port = GetPort(args);
 			Console.WriteLine("[server] listening on port {0}...", port);
 			using (var connectionFoyer = new ConnectionFoyer(clientHandlerFactory, port)) {
