@@ -12,7 +12,10 @@ namespace WorldSalt.Network.Packets.Connection {
 
 		public uint Length {
 			get {
-				throw new NotImplementedException();
+				return
+					Username.SerialisationLength()
+					+ PreferredProtocol.SerialisationLength()
+					+ SupportedProtocols.SerialisationLength(SerialisationHelper.SerialisationLength);
 			}
 		}
 

@@ -28,11 +28,11 @@ BlockTypeSpecifier :=
 	<extension_block : UniqueID>
 
 string :=
-	<length_bytes : u64>
+	<length_bytes : u32>
 	<utf8_data : u8 * length_bytes>
 
 List<T> :=
-	<count : u64>
+	<count : u32>
 	<items : T * count>
 
 Position :=

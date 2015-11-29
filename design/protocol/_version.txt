@@ -1,1 +1,1 @@
-Protocol version described here: 1
+Protocol version described here: 2

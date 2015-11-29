@@ -11,11 +11,11 @@ namespace WorldSalt.Network.Serialisation {
 
 		public static IEnumerable<Byte[]> Serialise(this string self) {
 			if(string.IsNullOrEmpty(self)) {
-				return ((UInt64)0).Serialise();
+				return ((UInt32)0).Serialise();
 			}
 
-			var length = (UInt64)self.Length;
 			var stringBytes = Encoding.UTF8.GetBytes(self);
+			var length = (UInt32)stringBytes.Length;
 			return length.Serialise().Concat(new[] { stringBytes });
 		}
 
@@ -23,20 +23,31 @@ namespace WorldSalt.Network.Serialisation {
 			return Enumerable.Repeat(SerialiseUnsignedInteger(self, 8).ToArray(), 1);
 		}
 
+		public static IEnumerable<Byte[]> Serialise(this UInt32 self) {
+			return Enumerable.Repeat(SerialiseUnsignedInteger(self, 4).ToArray(), 1);
+		}
+
 		public static IEnumerable<Byte[]> Serialise<T>(this IEnumerable<T> self, Serialiser<T> itemSerialiser) {
 			if(self == null) {
-				return ((UInt64)0).Serialise();
+				return ((UInt32)0).Serialise();
 			}
 
 			var fragments = self.Select(x => itemSerialiser(x)).ToList();
-			var length = (UInt64)fragments.LongCount();
+			var length = (UInt32)fragments.LongCount();
 			return length.Serialise().Concat(fragments.SelectMany(x => x));
 		}
 
 		public static Stream Deserialise(this Stream stream, out string value) {
-			UInt64 length;
+			UInt32 length;
 			stream = stream.Deserialise(out length);
 			value = Encoding.UTF8.GetString(stream.ReadByteSequence(length));
+			return stream;
+		}
+
+		public static Stream Deserialise(this Stream stream, out UInt32 value) {
+			UInt64 bigValue;
+			stream = stream.DeserialiseUnsignedInteger(out bigValue, 4);
+			value = (UInt32)bigValue;
 			return stream;
 		}
 
@@ -45,10 +56,26 @@ namespace WorldSalt.Network.Serialisation {
 		}
 
 		public static Stream Deserialise<TItem>(this Stream stream, out IList<TItem> value, Deserialiser<TItem> deserialiser) {
-			UInt64 length;
+			UInt32 length;
 			stream = stream.Deserialise(out length);
 			value = stream.ReadSequence<TItem>(length, deserialiser).ToList();
 			return stream;
+		}
+
+		public static UInt32 SerialisationLength(this string self) {
+			return sizeof(UInt64) + (UInt32)Encoding.UTF8.GetByteCount(self);
+		}
+
+		public static UInt32 SerialisationLength(this UInt64 self) {
+			return sizeof(UInt64);
+		}
+
+		public static UInt32 SerialisationLength<T>(this IEnumerable<T> self, UInt32 itemLength) {
+			return (UInt32)self.Count() * itemLength;
+		}
+
+		public static UInt32 SerialisationLength<T>(this IEnumerable<T> self, Func<T, UInt32> itemLengthCalculator) {
+			return self.Aggregate((UInt32)0, (len, item) => len + itemLengthCalculator(item));
 		}
 
 		public static void AssertEnd(this Stream stream) {
@@ -72,7 +99,7 @@ namespace WorldSalt.Network.Serialisation {
 			return combinedBuffer;
 		}
 
-		private static Byte[] ReadByteSequence(this Stream stream, UInt64 numBytes) {
+		private static Byte[] ReadByteSequence(this Stream stream, UInt32 numBytes) {
 			var smallLength = (int)numBytes;
 			var sequence = new Byte[smallLength];
 			var numRead = stream.Read(sequence, 0, smallLength);
@@ -83,7 +110,7 @@ namespace WorldSalt.Network.Serialisation {
 			return sequence;
 		}
 
-		private static IEnumerable<TItem> ReadSequence<TItem>(this Stream stream, UInt64 numItems, Deserialiser<TItem> deserialiser) {
+		private static IEnumerable<TItem> ReadSequence<TItem>(this Stream stream, UInt32 numItems, Deserialiser<TItem> deserialiser) {
 			foreach (var i in Enumerable.Repeat(0, (int)numItems)) {
 				TItem item;
 				stream = deserialiser(stream, out item);
