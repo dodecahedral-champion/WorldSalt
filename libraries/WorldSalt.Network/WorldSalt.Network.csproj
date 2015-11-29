@@ -33,12 +33,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IPacket.cs" />
     <Compile Include="IStreamProducer.cs" />
     <Compile Include="IStreamConsumer.cs" />
     <Compile Include="IStreamDuplex.cs" />
     <Compile Include="IPacketStreamFactory.cs" />
     <Compile Include="PacketStreamFactory.cs" />
+    <Compile Include="Packets\IPacket.cs" />
+    <Compile Include="Packets\IPacketFromServer.cs" />
+    <Compile Include="Packets\IPacketFromClient.cs" />
+    <Compile Include="Packets\Connection\IConnectPayload.cs" />
+    <Compile Include="Packets\IPayload.cs" />
+    <Compile Include="Packets\IPayloadFromClient.cs" />
+    <Compile Include="Packets\IPayloadFromServer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Packets\" />
+    <Folder Include="Packets\Connection\" />
+  </ItemGroup>
 </Project>

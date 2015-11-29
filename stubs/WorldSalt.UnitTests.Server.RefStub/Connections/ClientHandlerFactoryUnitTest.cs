@@ -22,7 +22,7 @@ namespace WorldSalt.UnitTests.Server.RefStub.Connections {
 		[Test]
 		public void ShouldCreatePacketStreamWhenCreatingClientHandler() {
 			var socket = new TcpClient();
-			packetStreamFactory.Expect(x => x.CreateDuplex(socket));
+			packetStreamFactory.Expect(x => x.CreateDuplexForServer(socket));
 
 			var clientHandler = target.Create(socket);
 

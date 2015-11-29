@@ -10,7 +10,7 @@ namespace WorldSalt.Server.RefStub.Connections {
 		}
 
 		public IClientHandler Create(TcpClient tcpClient) {
-			var stream = packetStreamFactory.CreateDuplex(tcpClient);
+			var stream = packetStreamFactory.CreateDuplexForServer(tcpClient);
 			return new ClientHandler(stream);
 		}
 	}

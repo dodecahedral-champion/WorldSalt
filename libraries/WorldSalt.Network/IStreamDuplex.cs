@@ -1,4 +1,4 @@
 namespace WorldSalt.Network {
-	public interface IStreamDuplex<T> : IStreamConsumer<T>, IStreamProducer<T> {
+	public interface IStreamDuplex<TConsume, TProduce> : IStreamConsumer<TConsume>, IStreamProducer<TProduce> {
 	}
 }

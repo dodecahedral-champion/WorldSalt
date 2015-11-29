@@ -1,7 +1,8 @@
 namespace WorldSalt.Network {
 	using System.Net.Sockets;
+	using WorldSalt.Network.Packets;
 
 	public interface IPacketStreamFactory {
-		IStreamDuplex<IPacket> CreateDuplex(TcpClient socket);
+		IStreamDuplex<IPacketFromServer, IPacketFromClient> CreateDuplexForServer(TcpClient socket);
 	}
 }
