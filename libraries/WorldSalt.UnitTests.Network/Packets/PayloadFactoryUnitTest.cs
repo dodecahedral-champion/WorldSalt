@@ -38,5 +38,21 @@ namespace WorldSalt.UnitTests.Network {
 			rawPayload.VerifyAllExpectations();
 		}
 
+		[Test]
+		public void ShouldCallCreatorToDeterminePayloadTypeFromCodes() {
+			var rawBytes = new byte[] { 0x12, 0x34, 0x56 };
+			var rawPayload = MockRepository.GenerateMock<IRawPayload<FromClient>>();
+			var typedPayload = MockRepository.GenerateMock<ITypedPayload<FromClient>>();
+			rawPayload.Expect(x => x.GetBytes()).Return(rawBytes);
+			typedPayload.Expect(x => x.SetBytes(rawBytes));
+			payloadTypedCreator.Expect(x => x.Create(0x00, 0x03)).Return(typedPayload);
+
+			var convertedPayload = targetC.ConvertPayload(rawPayload, 0x00, 0x03);
+
+			Assert.AreSame(typedPayload, convertedPayload);
+			payloadTypedCreator.VerifyAllExpectations();
+			rawPayload.VerifyAllExpectations();
+			typedPayload.VerifyAllExpectations();
+		}
 	}
 }

@@ -14,8 +14,9 @@ namespace WorldSalt.Network.Packets {
 			return new Packet<TPayload, TDirection>(payload);
 		}
 
-		public ITypedPacket<TPayload, TDirection> Create<TPayload>(IUntypedPacket<TDirection> untypedPacket) where TPayload : ITypedPayload<TDirection>, new() {
-			return new Packet<TPayload, TDirection>(payloadFactory.ConvertPayload<TPayload>(untypedPacket.Payload));
+		public ITypedPacket<TPayload, TDirection> ConvertToTyped<TPayload>(IUntypedPacket<TDirection> untypedPacket) where TPayload : ITypedPayload<TDirection>, new() {
+			var typedPayload = payloadFactory.ConvertPayload<TPayload>(untypedPacket.Payload);
+			return new Packet<TPayload, TDirection>(typedPayload);
 		}
 
 		public IUntypedPacket<TDirection> CreateUntyped(Byte type, Byte subtype, IRawPayload<TDirection> payload) {

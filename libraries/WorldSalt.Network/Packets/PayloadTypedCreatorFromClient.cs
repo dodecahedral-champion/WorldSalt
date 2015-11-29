@@ -7,20 +7,24 @@ namespace WorldSalt.Network.Packets {
 		public ITypedPayload<FromClient> Create(Byte packetType, Byte packetSubtype) {
 			switch(packetType) {
 				case 0x00:
-					switch(packetSubtype) {
-						case 0x00:
-							return new ConnectPayload();
-						case 0x01:
-							throw BadPacketForDirection(packetType, packetSubtype);
-						case 0x02:
-							throw BadPacketForDirection(packetType, packetSubtype);
-						case 0x03:
-							return new DisconnectPayload();
-						case 0x04:
-							throw BadPacketForDirection(packetType, packetSubtype);
-						default:
-							throw UnknownPacket(packetType, packetSubtype);
-					}
+					return CreateConnectionPayload(packetType, packetSubtype);
+				default:
+					throw UnknownPacket(packetType, packetSubtype);
+			}
+		}
+
+		private ITypedPayload<FromClient> CreateConnectionPayload(byte packetType, byte packetSubtype) {
+			switch(packetSubtype) {
+				case 0x00:
+					return new ConnectPayload();
+				case 0x01:
+					throw BadPacketForDirection(packetType, packetSubtype);
+				case 0x02:
+					throw BadPacketForDirection(packetType, packetSubtype);
+				case 0x03:
+					return new DisconnectPayload();
+				case 0x04:
+					throw BadPacketForDirection(packetType, packetSubtype);
 				default:
 					throw UnknownPacket(packetType, packetSubtype);
 			}

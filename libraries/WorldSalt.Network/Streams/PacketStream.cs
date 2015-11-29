@@ -29,6 +29,10 @@ namespace WorldSalt.Network {
 			stream.Write(wireFormat, 0, wireFormat.Length);
 		}
 
+		public void Close() {
+			socket.Close();
+		}
+
 		private IUntypedPacket<TProduceDirection> TakeRaw() {
 			UInt32 packetLength;
 			Byte packetType;
