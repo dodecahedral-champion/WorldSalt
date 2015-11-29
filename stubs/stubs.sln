@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.Server.RefStub", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.UnitTests.Server.RefStub", "WorldSalt.UnitTests.Server.RefStub\WorldSalt.UnitTests.Server.RefStub.csproj", "{188D44B6-D625-4A92-8866-4CC886F34653}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.Client.RefStub", "WorldSalt.Client.RefStub\WorldSalt.Client.RefStub.csproj", "{9F281F2A-70AA-4881-B002-92761F5F31B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +21,10 @@ Global
 		{804CB79F-7579-4796-ADDD-A9C4C436C116}.Debug|x86.Build.0 = Debug|x86
 		{804CB79F-7579-4796-ADDD-A9C4C436C116}.Release|x86.ActiveCfg = Release|x86
 		{804CB79F-7579-4796-ADDD-A9C4C436C116}.Release|x86.Build.0 = Release|x86
+		{9F281F2A-70AA-4881-B002-92761F5F31B9}.Debug|x86.ActiveCfg = Debug|x86
+		{9F281F2A-70AA-4881-B002-92761F5F31B9}.Debug|x86.Build.0 = Debug|x86
+		{9F281F2A-70AA-4881-B002-92761F5F31B9}.Release|x86.ActiveCfg = Release|x86
+		{9F281F2A-70AA-4881-B002-92761F5F31B9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = WorldSalt.Server.RefStub\WorldSalt.Server.RefStub.csproj

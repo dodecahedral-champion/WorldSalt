@@ -7,5 +7,9 @@ namespace WorldSalt.Network {
 		public IStreamDuplex<ITypedPacket<FromServer>, ITypedPacket<FromClient>> CreateDuplexForServer(TcpClient socket) {
 			throw new System.NotImplementedException();
 		}
+
+		public IStreamDuplex<ITypedPacket<FromClient>, ITypedPacket<FromServer>> CreateDuplexForClient(TcpClient socket) {
+			throw new System.NotImplementedException();
+		}
 	}
 }

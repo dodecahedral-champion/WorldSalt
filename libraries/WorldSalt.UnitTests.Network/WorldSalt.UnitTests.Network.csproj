@@ -46,6 +46,7 @@
     <Compile Include="Packets\Connection\KickedPayloadUnitTest.cs" />
     <Compile Include="Packets\Connection\DisconnectPayloadUnitTest.cs" />
     <Compile Include="Packets\PacketTypeVerification.cs" />
+    <Compile Include="Packets\PacketFactoryUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

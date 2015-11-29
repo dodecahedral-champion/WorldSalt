@@ -5,5 +5,6 @@ namespace WorldSalt.Network {
 
 	public interface IPacketStreamFactory {
 		IStreamDuplex<ITypedPacket<FromServer>, ITypedPacket<FromClient>> CreateDuplexForServer(TcpClient socket);
+		IStreamDuplex<ITypedPacket<FromClient>, ITypedPacket<FromServer>> CreateDuplexForClient(TcpClient socket);
 	}
 }

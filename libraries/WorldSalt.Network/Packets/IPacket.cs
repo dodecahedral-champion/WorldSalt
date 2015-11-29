@@ -3,7 +3,6 @@ namespace WorldSalt.Network.Packets {
 
 	public interface IUntypedPacket<TDirection> where TDirection : IDirection {
 		IRawPayload<TDirection> Payload { get; }
-		ITypedPacket<TPayload, TDirection> ConvertToTyped<TPayload>() where TPayload : ITypedPayload<TDirection>, new();
 	}
 
 	public interface ITypedPacket<TDirection> where TDirection : IDirection {
