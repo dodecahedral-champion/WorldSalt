@@ -34,11 +34,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IStreamProducer.cs" />
-    <Compile Include="IStreamConsumer.cs" />
-    <Compile Include="IStreamDuplex.cs" />
-    <Compile Include="IPacketStreamFactory.cs" />
-    <Compile Include="PacketStreamFactory.cs" />
     <Compile Include="Packets\IPacket.cs" />
     <Compile Include="Packets\IPayload.cs" />
     <Compile Include="Packets\Connection\ConnectPayload.cs" />
@@ -64,6 +59,12 @@
     <Compile Include="Packets\IPayloadTypedCreator.cs" />
     <Compile Include="Packets\PayloadTypedCreatorFromServer.cs" />
     <Compile Include="Packets\PayloadTypedCreatorFromClient.cs" />
+    <Compile Include="Streams\IStreamConsumer.cs" />
+    <Compile Include="Streams\IStreamDuplex.cs" />
+    <Compile Include="Streams\IStreamProducer.cs" />
+    <Compile Include="Streams\IStreamCloseable.cs" />
+    <Compile Include="Streams\PacketStreamFactory.cs" />
+    <Compile Include="Streams\IPacketStreamFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

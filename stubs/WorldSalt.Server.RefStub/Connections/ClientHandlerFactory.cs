@@ -3,6 +3,7 @@ namespace WorldSalt.Server.RefStub.Connections {
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Packets;
+	using WorldSalt.Network.Streams;
 
 	public class ClientHandlerFactory : IClientHandlerFactory {
 		private IPacketFactory<FromServer> packetFactory;

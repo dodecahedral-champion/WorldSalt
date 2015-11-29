@@ -1,4 +1,4 @@
-namespace WorldSalt.Network {
+namespace WorldSalt.Network.Streams {
 	using System;
 	using System.Net.Sockets;
 	using WorldSalt.Network.Direction;

@@ -6,6 +6,7 @@ namespace WorldSalt.Server.RefStub {
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Packets;
+	using WorldSalt.Network.Streams;
 	using WorldSalt.Server.RefStub.Connections;
 
 	public class MainClass {

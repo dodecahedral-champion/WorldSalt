@@ -6,6 +6,7 @@ namespace WorldSalt.UnitTests.Server.RefStub.Connections {
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Packets;
+	using WorldSalt.Network.Streams;
 	using WorldSalt.Server.RefStub;
 	using WorldSalt.Server.RefStub.Connections;
 

@@ -1,12 +1,12 @@
-using System.Linq;
-
 namespace WorldSalt.Client.RefStub {
 	using System;
+	using System.Linq;
 	using System.Net.Sockets;
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Packets;
 	using WorldSalt.Network.Packets.Connection;
+	using WorldSalt.Network.Streams;
 
 	public class ClientProcess {
 		private IStreamDuplex<ITypedPacket<FromClient>, ITypedPacket<FromServer>> stream;

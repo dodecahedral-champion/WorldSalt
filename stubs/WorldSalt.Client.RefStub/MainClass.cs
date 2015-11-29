@@ -5,6 +5,7 @@ namespace WorldSalt.Client.RefStub {
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Packets;
+	using WorldSalt.Network.Streams;
 
 	public class MainClass {
 		private static int DEFAULT_PORT = 1117;
