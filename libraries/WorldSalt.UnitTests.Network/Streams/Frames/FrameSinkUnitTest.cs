@@ -1,4 +1,4 @@
-namespace WorldSalt.UnitTests.Network.Streams {
+namespace WorldSalt.UnitTests.Network.Streams.Frames {
 	using System;
 	using NUnit.Framework;
 	using Rhino.Mocks;

@@ -79,6 +79,8 @@
     <Compile Include="Streams\Frames\FrameSink.cs" />
     <Compile Include="Streams\Frames\IRawFrameSource.cs" />
     <Compile Include="Streams\Frames\RawFrameSource.cs" />
+    <Compile Include="Streams\Payloads\PayloadSource.cs" />
+    <Compile Include="Streams\Payloads\PayloadSink.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -89,5 +91,6 @@
     <Folder Include="Frames\" />
     <Folder Include="Streams\Bytes\" />
     <Folder Include="Streams\Frames\" />
+    <Folder Include="Streams\Payloads\" />
   </ItemGroup>
 </Project>

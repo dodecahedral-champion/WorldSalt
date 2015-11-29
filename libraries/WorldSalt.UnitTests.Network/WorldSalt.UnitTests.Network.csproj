@@ -50,9 +50,11 @@
     <Compile Include="Frames\UntypedFrameUnitTest.cs" />
     <Compile Include="Payloads\PayloadTypeVerification.cs" />
     <Compile Include="Frames\FrameUnitTest.cs" />
-    <Compile Include="Streams\FrameSinkUnitTest.cs" />
-    <Compile Include="Streams\FrameSourceUnitTest.cs" />
-    <Compile Include="Streams\RawFrameSourceUnitTest.cs" />
+    <Compile Include="Streams\Frames\FrameSourceUnitTest.cs" />
+    <Compile Include="Streams\Frames\FrameSinkUnitTest.cs" />
+    <Compile Include="Streams\Frames\RawFrameSourceUnitTest.cs" />
+    <Compile Include="Streams\Payloads\PayloadSourceUnitTest.cs" />
+    <Compile Include="Streams\Payloads\PayloadSinkUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -66,5 +68,7 @@
     <Folder Include="Payloads\" />
     <Folder Include="Streams\" />
     <Folder Include="Streams\Bytes\" />
+    <Folder Include="Streams\Frames\" />
+    <Folder Include="Streams\Payloads\" />
   </ItemGroup>
 </Project>
