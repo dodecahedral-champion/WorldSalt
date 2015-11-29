@@ -14,7 +14,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
+    <OutputPath>..\..\build\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,7 +24,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>..\..\build\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
@@ -32,10 +32,37 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="WorldSalt.Model">
+      <HintPath>..\..\build\Debug\WorldSalt.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="WorldSalt.Network">
+      <HintPath>..\..\build\Debug\WorldSalt.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="WorldSalt.Persist">
+      <HintPath>..\..\build\Debug\WorldSalt.Persist.dll</HintPath>
+    </Reference>
+    <Reference Include="WorldSalt.Simulate">
+      <HintPath>..\..\build\Debug\WorldSalt.Simulate.dll</HintPath>
+    </Reference>
+    <Reference Include="WorldSalt.Think">
+      <HintPath>..\..\build\Debug\WorldSalt.Think.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainClass.cs" />
+    <Compile Include="ServerProcess.cs" />
+    <Compile Include="Connections\ClientHandler.cs" />
+    <Compile Include="Connections\IConnectionFoyer.cs" />
+    <Compile Include="Connections\ConnectionFoyer.cs" />
+    <Compile Include="Connections\IClientHandler.cs" />
+    <Compile Include="Connections\IClientHandlerFactory.cs" />
+    <Compile Include="Connections\IClientStreamFactory.cs" />
+    <Compile Include="Connections\ClientHandlerFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Connections\" />
+  </ItemGroup>
 </Project>
