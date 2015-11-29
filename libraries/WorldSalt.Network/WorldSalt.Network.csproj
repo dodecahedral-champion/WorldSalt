@@ -30,6 +30,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -39,16 +40,23 @@
     <Compile Include="IPacketStreamFactory.cs" />
     <Compile Include="PacketStreamFactory.cs" />
     <Compile Include="Packets\IPacket.cs" />
-    <Compile Include="Packets\IPacketFromServer.cs" />
-    <Compile Include="Packets\IPacketFromClient.cs" />
-    <Compile Include="Packets\Connection\IConnectPayload.cs" />
     <Compile Include="Packets\IPayload.cs" />
-    <Compile Include="Packets\IPayloadFromClient.cs" />
-    <Compile Include="Packets\IPayloadFromServer.cs" />
+    <Compile Include="Packets\Connection\ConnectPayload.cs" />
+    <Compile Include="Packets\UntypedPayload.cs" />
+    <Compile Include="Packets\UntypedPacket.cs" />
+    <Compile Include="Packets\Packet.cs" />
+    <Compile Include="Direction\IDirection.cs" />
+    <Compile Include="Direction\FromClient.cs" />
+    <Compile Include="Direction\FromServer.cs" />
+    <Compile Include="ProtocolVersion.cs" />
+    <Compile Include="Serialisation\SerialisationHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Packets\" />
     <Folder Include="Packets\Connection\" />
+    <Folder Include="Direction\" />
+    <Folder Include="ProtocolVersion\" />
+    <Folder Include="Serialisation\" />
   </ItemGroup>
 </Project>

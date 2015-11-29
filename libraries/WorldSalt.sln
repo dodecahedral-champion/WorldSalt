@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.Render", "WorldSa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.UnitTests.Model", "WorldSalt.UnitTests.Model\WorldSalt.UnitTests.Model.csproj", "{0A9E84B4-2ACF-4E8A-9EFB-B6EA3279906C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSalt.UnitTests.Network", "WorldSalt.UnitTests.Network\WorldSalt.UnitTests.Network.csproj", "{9B188125-B282-4223-B2C8-7590265B1064}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{866F3168-032F-49F4-AC44-9084EF2D8C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{866F3168-032F-49F4-AC44-9084EF2D8C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{866F3168-032F-49F4-AC44-9084EF2D8C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B188125-B282-4223-B2C8-7590265B1064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B188125-B282-4223-B2C8-7590265B1064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B188125-B282-4223-B2C8-7590265B1064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B188125-B282-4223-B2C8-7590265B1064}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = WorldSalt.Model\WorldSalt.Model.csproj

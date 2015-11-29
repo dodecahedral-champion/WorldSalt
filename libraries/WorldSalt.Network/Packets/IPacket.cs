@@ -1,7 +1,16 @@
 namespace WorldSalt.Network.Packets {
-	public interface IPacket {
+	using WorldSalt.Network.Direction;
+
+	public interface IUntypedPacket<TDirection> where TDirection : IDirection {
+		IRawPayload<TDirection> Payload { get; }
+		ITypedPacket<TPayload, TDirection> ConvertToTyped<TPayload>() where TPayload : ITypedPayload<TDirection>, new();
 	}
 
-	public interface IPacket<TPayload> : IPacket where TPayload : IPayload {
+	public interface ITypedPacket<TDirection> where TDirection : IDirection {
+		byte[] GetBytes();
+	}
+
+	public interface ITypedPacket<TPayload, TDirection> : ITypedPacket<TDirection> where TPayload : ITypedPayload<TDirection> where TDirection : IDirection {
+		TPayload Payload { get; }
 	}
 }
