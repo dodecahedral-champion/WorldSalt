@@ -1,4 +1,4 @@
-namespace WorldSalt.Network.Streams {
+namespace WorldSalt.Network.Streams.Frames {
 	using System;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Frames;

@@ -7,6 +7,7 @@ namespace WorldSalt.UnitTests.Network.Streams {
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Streams;
 	using WorldSalt.Network.Streams.Bytes;
+	using WorldSalt.Network.Streams.Frames;
 
 	[TestFixture]
 	public class RawFrameSourceUnitTest {
