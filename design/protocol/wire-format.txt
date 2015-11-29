@@ -1,7 +1,7 @@
 -- all integers are sent little-endian
 
 %packet_header :=
-	<length_bytes : u32>
+	<payload_length_bytes : u32>
 	<type : u8>
 	<subtype : u8>
 

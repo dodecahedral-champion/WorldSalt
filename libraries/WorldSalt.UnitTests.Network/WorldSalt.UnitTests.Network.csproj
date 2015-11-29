@@ -48,6 +48,7 @@
     <Compile Include="Frames\FrameFactoryUnitTest.cs" />
     <Compile Include="Frames\UntypedFrameUnitTest.cs" />
     <Compile Include="Payloads\PayloadTypeVerification.cs" />
+    <Compile Include="Frames\FrameUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
