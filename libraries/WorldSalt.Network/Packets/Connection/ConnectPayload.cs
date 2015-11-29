@@ -15,7 +15,7 @@ namespace WorldSalt.Network.Packets.Connection {
 				return
 					Username.SerialisationLength()
 					+ PreferredProtocol.SerialisationLength()
-					+ SupportedProtocols.SerialisationLength(SerialisationHelper.SerialisationLength);
+					+ SupportedProtocols.SerialisationLength(LengthCalculation.SerialisationLength);
 			}
 		}
 
@@ -40,7 +40,7 @@ namespace WorldSalt.Network.Packets.Connection {
 			new MemoryStream(bytes)
 				.Deserialise(out username)
 				.Deserialise(out preferredProtocol)
-				.Deserialise(out supportedProtocols, SerialisationHelper.Deserialise)
+				.Deserialise(out supportedProtocols, Deserialisation.Deserialise)
 				.AssertEnd();
 
 			Username = username;
@@ -51,7 +51,7 @@ namespace WorldSalt.Network.Packets.Connection {
 		public byte[] GetBytes() {
 			return Username.Serialise()
 				.Concat(PreferredProtocol.Serialise())
-				.Concat(SupportedProtocols.Serialise(SerialisationHelper.Serialise))
+				.Concat(SupportedProtocols.Serialise(Serialisation.Serialise))
 				.ConcatenateBuffers();
 		}
 	}

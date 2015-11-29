@@ -49,8 +49,10 @@
     <Compile Include="Direction\FromClient.cs" />
     <Compile Include="Direction\FromServer.cs" />
     <Compile Include="ProtocolVersion.cs" />
-    <Compile Include="Serialisation\SerialisationHelper.cs" />
     <Compile Include="Packets\Connection\ConnectedPayload.cs" />
+    <Compile Include="Serialisation\LengthCalculation.cs" />
+    <Compile Include="Serialisation\Serialisation.cs" />
+    <Compile Include="Serialisation\Deserialisation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
