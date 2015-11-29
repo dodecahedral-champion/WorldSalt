@@ -54,6 +54,8 @@
     <Compile Include="SerialisationExtensions\LengthCalculation.cs" />
     <Compile Include="SerialisationExtensions\Serialisation.cs" />
     <Compile Include="SerialisationExtensions\Deserialisation.cs" />
+    <Compile Include="Packets\Connection\DisconnectPayload.cs" />
+    <Compile Include="Packets\Connection\KickedPayload.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

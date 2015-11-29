@@ -1,4 +1,4 @@
-namespace WorldSalt.Network {
+namespace WorldSalt.Network.Packets.Connection {
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
