@@ -88,6 +88,8 @@
     <Compile Include="Streams\Frames\IFrameSinkFactory.cs" />
     <Compile Include="Payloads\Ping\ClientPingPayload.cs" />
     <Compile Include="Payloads\Ping\ClientPingResponsePayload.cs" />
+    <Compile Include="Payloads\Ping\ServerPingPayload.cs" />
+    <Compile Include="Payloads\Ping\ServerPingResponsePayload.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -22,8 +22,8 @@ namespace WorldSalt.UnitTests.Network.Payloads {
 		public void ShouldHaveCorrectTypeAndSubtypesForPingPayloads() {
 			VerifyTypes<FromClient>(0x01, 0x00).For<ClientPingPayload>();
 			VerifyTypes<FromServer>(0x01, 0x01).For<ClientPingResponsePayload>();
-			//VerifyTypes<FromServer>(0x01, 0x02).For<ServerPingPayload>();
-			//VerifyTypes<FromClient>(0x01, 0x03).For<ServerPingResponsePayload>();
+			VerifyTypes<FromServer>(0x01, 0x02).For<ServerPingPayload>();
+			VerifyTypes<FromClient>(0x01, 0x03).For<ServerPingResponsePayload>();
 		}
 
 		private Verifier<TDirection> VerifyTypes<TDirection>(Byte expectedType, Byte expectedSubtype) where TDirection : IDirection {
