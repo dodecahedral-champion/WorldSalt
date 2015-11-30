@@ -3,5 +3,6 @@ namespace WorldSalt.Server.RefStub.Connections {
 
 	public interface IClientHandler : IDisposable {
 		void Run();
+		void Close();
 	}
 }

@@ -1,38 +1,49 @@
 namespace WorldSalt.UnitTests.Server.RefStub.Connections {
 	using System;
-	using System.Net.Sockets;
 	using NUnit.Framework;
 	using Rhino.Mocks;
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Frames;
+	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Streams;
+	using WorldSalt.Network.Streams.Bytes;
+	using WorldSalt.Network.Streams.Payloads;
 	using WorldSalt.Server.RefStub;
 	using WorldSalt.Server.RefStub.Connections;
 
 	[TestFixture]
 	public class ClientHandlerFactoryUnitTest {
+		private IPayloadSinkFactory<FromServer> sinkFactory;
+		private IPayloadSourceFactory<FromClient> sourceFactory;
+
 		private ClientHandlerFactory target;
-		private IFrameFactory<FromServer> frameFactory;
-		private IFrameStreamFactory streamFactory;
 
 		[SetUp]
 		public void Setup() {
-			frameFactory = MockRepository.GenerateMock<IFrameFactory<FromServer>>();
-			streamFactory = MockRepository.GenerateMock<IFrameStreamFactory>();
+			sinkFactory = MockRepository.GenerateMock<IPayloadSinkFactory<FromServer>>();
+			sourceFactory = MockRepository.GenerateMock<IPayloadSourceFactory<FromClient>>();
 
-			target = new ClientHandlerFactory(frameFactory, streamFactory);
+			target = new ClientHandlerFactory(sinkFactory, sourceFactory);
 		}
 
 		[Test]
 		public void ShouldCreateStreamWhenCreatingClientHandler() {
-			var socket = new TcpClient();
-			streamFactory.Expect(x => x.CreateDuplexForServer(socket));
+			var byteSink = MockRepository.GenerateMock<IByteSink<FromServer>>();
+			var byteSource = MockRepository.GenerateMock<IByteSource<FromClient>>();
+			var sink = MockRepository.GenerateMock<IStreamConsumer<ITypedPayload<FromServer>>>();
+			var source = MockRepository.GenerateMock<IStreamProducer<ITypedPayload<FromClient>>>();
+			sinkFactory.Expect(x => x.Create(byteSink)).Return(sink);
+			sourceFactory.Expect(x => x.Create(byteSource)).Return(source);
+			sink.Expect(x => x.Close());
+			source.Expect(x => x.Close());
 
-			var clientHandler = target.Create(socket);
+			var clientHandler = target.Create(byteSink, byteSource);
+			clientHandler.Close();
 
 			Assert.IsNotNull(clientHandler);
-			streamFactory.VerifyAllExpectations();
+			sinkFactory.VerifyAllExpectations();
+			sourceFactory.VerifyAllExpectations();
 		}
 	}
 }

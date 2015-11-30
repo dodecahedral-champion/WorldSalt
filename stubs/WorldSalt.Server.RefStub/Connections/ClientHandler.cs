@@ -6,29 +6,36 @@ namespace WorldSalt.Server.RefStub.Connections {
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Frames;
+	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Payloads.Connection;
 	using WorldSalt.Network.Streams;
+	using WorldSalt.Network.Streams.Payloads;
 
 	public class ClientHandler : IClientHandler {
-		IStreamDuplex<ITypedFrame<FromServer>, ITypedFrame<FromClient>> stream;
-		IFrameFactory<FromServer> frameFactory;
+		private IStreamConsumer<ITypedPayload<FromServer>> payloadSink;
+		private IStreamProducer<ITypedPayload<FromClient>> payloadSource;
 		const UInt64 SERVER_PROTOCOL = ProtocolVersion.CURRENT;
 		string username;
 
-		public ClientHandler(IFrameFactory<FromServer> frameFactory, IStreamDuplex<ITypedFrame<FromServer>, ITypedFrame<FromClient>> stream) {
-			this.frameFactory = frameFactory;
-			this.stream = stream;
+		public ClientHandler(IStreamConsumer<ITypedPayload<FromServer>> payloadSink, IStreamProducer<ITypedPayload<FromClient>> payloadSource) {
+			this.payloadSink = payloadSink;
+			this.payloadSource = payloadSource;
 			username = Guid.NewGuid().ToString();
 		}
 
 		public void Dispose() {
-			stream.Close();
-			stream.Dispose();
+			Close();
+			payloadSource.Dispose();
+			payloadSink.Dispose();
+		}
+
+		public void Close() {
+			payloadSource.Close();
+			payloadSink.Close();
 		}
 
 		public void Run() {
-			var connectFrame = stream.Take();
-			var connectPayload = connectFrame.Payload as ConnectPayload;
+			var connectPayload = payloadSource.Take() as ConnectPayload;
 			if (connectPayload == null) {
 				Log("bad connect packet");
 				throw new InvalidOperationException("bad connect packet");
@@ -48,19 +55,19 @@ namespace WorldSalt.Server.RefStub.Connections {
 
 		private void AcceptConnection() {
 			Log("accepted connection");
-			stream.Put(frameFactory.Create(new ConnectedPayload()));
+			payloadSink.Put(new ConnectedPayload());
 		}
 
 		private void RejectConnection() {
 			Log("rejected connection");
-			stream.Put(frameFactory.Create(new UnsupportedProtocolVersionPayload(SERVER_PROTOCOL, Enumerable.Empty<UInt64>())));
-			stream.Close();
+			payloadSink.Put(new UnsupportedProtocolVersionPayload(SERVER_PROTOCOL, Enumerable.Empty<UInt64>()));
+			Close();
 		}
 
 		private void DisconnectClient() {
 			Log("kicked client");
-			stream.Put(frameFactory.Create(new KickedPayload("you're done here")));
-			stream.Close();
+			payloadSink.Put(new KickedPayload("you're done here"));
+			Close();
 		}
 
 		private bool IsVersionOkay(UInt64 requestedVersion, IEnumerable<UInt64> alternateVersions) {

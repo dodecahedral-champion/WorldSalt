@@ -7,6 +7,8 @@ namespace WorldSalt.Client.RefStub {
 	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Streams;
+	using WorldSalt.Network.Streams.Frames;
+	using WorldSalt.Network.Streams.Payloads;
 
 	public class MainClass {
 		private static int DEFAULT_PORT = 1117;
@@ -15,8 +17,15 @@ namespace WorldSalt.Client.RefStub {
 			var hostname = GetHostname(args);
 			var port = GetPort(args);
 			Console.WriteLine("[client] connecting to {0}:{1}", hostname, port);
-			var frameFactory = new FrameFactory<FromClient>(new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient()));
-			using (var client = new ClientProcess(frameFactory, new FrameStreamFactory(), hostname, port)) {
+			var payloadFactoryC = new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient());
+			var payloadFactoryS = new PayloadFactory<FromServer>(new PayloadTypedCreatorFromServer());
+			var frameFactoryC = new FrameFactory<FromClient>(payloadFactoryC);
+			var frameFactoryS = new FrameFactory<FromServer>(payloadFactoryS);
+			var frameSourceFactory = new FrameSourceFactory<FromServer>(payloadFactoryS, frameFactoryS);
+			var frameSinkFactory = new FrameSinkFactory<FromClient>();
+			var sinkFactory = new PayloadSinkFactory<FromClient>(frameSinkFactory, frameFactoryC);
+			var sourceFactory = new PayloadSourceFactory<FromServer>(frameSourceFactory);
+			using (var client = new ClientProcess(sinkFactory, sourceFactory, hostname, port)) {
 				client.Connect("Fred", ProtocolVersion.CURRENT);
 				client.Disconnect();
 			}

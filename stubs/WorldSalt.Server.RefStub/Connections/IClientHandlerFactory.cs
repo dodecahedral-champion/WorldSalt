@@ -1,7 +1,8 @@
 namespace WorldSalt.Server.RefStub.Connections {
-	using System.Net.Sockets;
+	using WorldSalt.Network.Direction;
+	using WorldSalt.Network.Streams.Bytes;
 
 	public interface IClientHandlerFactory {
-		IClientHandler Create(TcpClient tcpClient);
+		IClientHandler Create(IByteSink<FromServer> byteSink, IByteSource<FromClient> byteSource);
 	}
 }

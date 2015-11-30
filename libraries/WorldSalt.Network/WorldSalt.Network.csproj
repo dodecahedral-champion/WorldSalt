@@ -55,9 +55,6 @@
     <Compile Include="Streams\IStreamDuplex.cs" />
     <Compile Include="Streams\IStreamProducer.cs" />
     <Compile Include="Streams\IStreamCloseable.cs" />
-    <Compile Include="Streams\FrameStream.cs" />
-    <Compile Include="Streams\FrameStreamFactory.cs" />
-    <Compile Include="Streams\IFrameStreamFactory.cs" />
     <Compile Include="Direction\IDirection.cs" />
     <Compile Include="Direction\FromClient.cs" />
     <Compile Include="Direction\FromServer.cs" />
@@ -81,6 +78,14 @@
     <Compile Include="Streams\Frames\RawFrameSource.cs" />
     <Compile Include="Streams\Payloads\PayloadSource.cs" />
     <Compile Include="Streams\Payloads\PayloadSink.cs" />
+    <Compile Include="Streams\Payloads\IPayloadSourceFactory.cs" />
+    <Compile Include="Streams\Payloads\IPayloadSinkFactory.cs" />
+    <Compile Include="Streams\Payloads\PayloadSourceFactory.cs" />
+    <Compile Include="Streams\Payloads\PayloadSinkFactory.cs" />
+    <Compile Include="Streams\Frames\IFrameSourceFactory.cs" />
+    <Compile Include="Streams\Frames\FrameSourceFactory.cs" />
+    <Compile Include="Streams\Frames\FrameSinkFactory.cs" />
+    <Compile Include="Streams\Frames\IFrameSinkFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

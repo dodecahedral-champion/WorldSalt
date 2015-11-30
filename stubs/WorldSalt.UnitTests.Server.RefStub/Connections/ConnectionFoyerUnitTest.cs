@@ -17,7 +17,7 @@ namespace WorldSalt.UnitTests.Server.RefStub.Connections {
 		public void Setup() {
 			clientFactory = MockRepository.GenerateMock<IClientHandlerFactory>();
 			clientHandler = MockRepository.GenerateMock<IClientHandler>();
-			clientFactory.Stub(x => x.Create(null)).IgnoreArguments().Return(clientHandler);
+			clientFactory.Stub(x => x.Create(null, null)).IgnoreArguments().Return(clientHandler);
 
 			target = new ConnectionFoyer(clientFactory, LISTEN_PORT);
 		}
@@ -28,7 +28,7 @@ namespace WorldSalt.UnitTests.Server.RefStub.Connections {
 		}
 
 		[Test]
-		public void ShouldCallStreamFactoryWhenClientConnects() {
+		public void ShouldCallClientHandlerFactoryWhenClientConnects() {
 			var remote = new TcpClient("localhost", LISTEN_PORT);
 			var actualClientHandler = target.AcceptOne();
 			remote.Close();

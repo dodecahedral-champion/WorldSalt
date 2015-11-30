@@ -2,6 +2,8 @@ namespace WorldSalt.Server.RefStub.Connections {
 	using System;
 	using System.Net;
 	using System.Net.Sockets;
+	using WorldSalt.Network.Direction;
+	using WorldSalt.Network.Streams.Bytes;
 
 	public class ConnectionFoyer : IConnectionFoyer {
 		private TcpListener listener;
@@ -20,7 +22,9 @@ namespace WorldSalt.Server.RefStub.Connections {
 		public IClientHandler AcceptOne() {
 			var socket = listener.AcceptTcpClient();
 			Console.WriteLine("[server] met new client");
-			return clientHandlerFactory.Create(socket);
+			var byteSink = new TcpByteSink<FromServer>(socket);
+			var byteSource = new TcpByteSource<FromClient>(socket);
+			return clientHandlerFactory.Create(byteSink, byteSource);
 		}
 	}
 }

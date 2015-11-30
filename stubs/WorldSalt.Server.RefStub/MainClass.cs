@@ -8,14 +8,23 @@ namespace WorldSalt.Server.RefStub {
 	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Streams;
+	using WorldSalt.Network.Streams.Frames;
+	using WorldSalt.Network.Streams.Payloads;
 	using WorldSalt.Server.RefStub.Connections;
 
 	public class MainClass {
 		private static int DEFAULT_PORT = 1117;
 
 		public static void Main(string[] args) {
-			var frameFactory = new FrameFactory<FromServer>(new PayloadFactory<FromServer>(new PayloadTypedCreatorFromServer()));
-			var clientHandlerFactory = new ClientHandlerFactory(frameFactory, new FrameStreamFactory());
+			var payloadFactoryS = new PayloadFactory<FromServer>(new PayloadTypedCreatorFromServer());
+			var payloadFactoryC = new PayloadFactory<FromClient>(new PayloadTypedCreatorFromClient());
+			var frameFactoryS = new FrameFactory<FromServer>(payloadFactoryS);
+			var frameFactoryC = new FrameFactory<FromClient>(payloadFactoryC);
+			var frameSinkFactory = new FrameSinkFactory<FromServer>();
+			var frameSourceFactory = new FrameSourceFactory<FromClient>(payloadFactoryC, frameFactoryC);
+			var sinkFactory = new PayloadSinkFactory<FromServer>(frameSinkFactory, frameFactoryS);
+			var sourceFactory = new PayloadSourceFactory<FromClient>(frameSourceFactory);
+			var clientHandlerFactory = new ClientHandlerFactory(sinkFactory, sourceFactory);
 			var port = GetPort(args);
 			Console.WriteLine("[server] listening on port {0}...", port);
 			using (var connectionFoyer = new ConnectionFoyer(clientHandlerFactory, port)) {

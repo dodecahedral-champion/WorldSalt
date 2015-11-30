@@ -55,6 +55,10 @@
     <Compile Include="Streams\Frames\RawFrameSourceUnitTest.cs" />
     <Compile Include="Streams\Payloads\PayloadSourceUnitTest.cs" />
     <Compile Include="Streams\Payloads\PayloadSinkUnitTest.cs" />
+    <Compile Include="Streams\Payloads\PayloadSourceFactoryUnitTest.cs" />
+    <Compile Include="Streams\Frames\FrameSourceFactoryUnitTest.cs" />
+    <Compile Include="Streams\Frames\FrameSinkFactoryUnitTest.cs" />
+    <Compile Include="Streams\Payloads\PayloadSinkFactoryUnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

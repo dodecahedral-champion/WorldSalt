@@ -5,28 +5,41 @@ namespace WorldSalt.Client.RefStub {
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Frames;
+	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Payloads.Connection;
 	using WorldSalt.Network.Streams;
+	using WorldSalt.Network.Streams.Bytes;
+	using WorldSalt.Network.Streams.Payloads;
 
 	public class ClientProcess : IDisposable {
-		private IStreamDuplex<ITypedFrame<FromClient>, ITypedFrame<FromServer>> stream;
-		private IFrameFactory<FromClient> frameFactory;
-		public ClientProcess(IFrameFactory<FromClient> frameFactory, IFrameStreamFactory streamFactory, string hostname, int port) {
-			stream = streamFactory.CreateDuplexForClient(new TcpClient(hostname, port));
-			this.frameFactory = frameFactory;
+		private IStreamConsumer<ITypedPayload<FromClient>> payloadSink;
+		private IStreamProducer<ITypedPayload<FromServer>> payloadSource;
+
+		public ClientProcess(PayloadSinkFactory<FromClient> sinkFactory, PayloadSourceFactory<FromServer> sourceFactory, string hostname, int port) {
+			var socket = new TcpClient(hostname, port);
+			var byteSink = new TcpByteSink<FromClient>(socket);
+			var byteSource = new TcpByteSource<FromServer>(socket);
+			this.payloadSink = sinkFactory.Create(byteSink);
+			this.payloadSource = sourceFactory.Create(byteSource);
 		}
 
 		public void Dispose() {
-			stream.Close();
-			stream.Dispose();
+			Close();
+			payloadSink.Dispose();
+			payloadSource.Dispose();
+		}
+
+		public void Close() {
+			payloadSink.Close();
+			payloadSource.Close();
 		}
 
 		public void Connect(string username, UInt64 protocolVersion) {
 			Console.WriteLine("[client] connecting...");
-			stream.Put(frameFactory.Create(new ConnectPayload(username, protocolVersion, Enumerable.Empty<UInt64>())));
-			var connectResponse = stream.Take();
-			CheckForUnsupportedVersion(connectResponse.Payload as UnsupportedProtocolVersionPayload);
-			if(connectResponse.Payload as ConnectedPayload != null) {
+			payloadSink.Put(new ConnectPayload(username, protocolVersion, Enumerable.Empty<UInt64>()));
+			var connectResponse = payloadSource.Take();
+			CheckForUnsupportedVersion(connectResponse as UnsupportedProtocolVersionPayload);
+			if(connectResponse as ConnectedPayload != null) {
 				Console.WriteLine("[client] connected okay!");
 				return;
 			}
@@ -34,8 +47,8 @@ namespace WorldSalt.Client.RefStub {
 
 		public void Disconnect() {
 			Console.WriteLine("[client] disconnecting.");
-			stream.Put(frameFactory.Create(new DisconnectPayload()));
-			stream.Close();
+			payloadSink.Put(new DisconnectPayload());
+			Close();
 		}
 
 		private void CheckForUnsupportedVersion(UnsupportedProtocolVersionPayload payload) {
