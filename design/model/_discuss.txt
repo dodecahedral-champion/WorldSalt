@@ -1,0 +1,19 @@
+World contains a collection of Entities.
+Each Entity has one block grid with at least one block.
+Some Entities have a parent Entity.
+Entity-Parent connections are between specific blocks on each, but with a point position at a cm position relative to those blocks.
+An Entity-Parent connection might change its block and/or point position over time.
+Each Entity has a position (cm on three axes), orientation (2pi/256 unit on three axes), and velocity (cm/s on three axes).
+Each of the above data is relative to a spatial grid; every Entity is attached to a spatial grid.
+Different entities may use different spatial grids, and an entity may use different spatial grids over its lifetime.
+Spatial grids can be repositioned, reoriented, or removed.
+
+Every Entity has a total mass (recalculated whenever its block constitution changes).
+Every Entity has a centre of mass (recalculated as above).
+Every Entity has a total bounding cuboid (recalculated as above).
+Every Entity has a total force vector (g cm / s / s, on three axes).  This includes any gravitation.
+
+A block grid has one or more sub-grids; these are for memory management only, and all blocks behave physically as if part of the same grid.
+Some of an entity's block sub-grids might be loaded at different times.
+
+Every block type has a density (g per block).
