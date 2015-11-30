@@ -1,6 +1,5 @@
 namespace WorldSalt.Network.Payloads.Connection {
 	using System;
-	using System.IO;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.SerialisationExtensions;
 	using WorldSalt.Network.Streams.Bytes;

@@ -30,6 +30,10 @@ namespace WorldSalt.Network.SerialisationExtensions {
 			return Enumerable.Repeat(SerialiseUnsignedInteger(self, 8).ToArray(), 1);
 		}
 
+		public static IEnumerable<Byte[]> Serialise(this Guid self) {
+			return Enumerable.Repeat(self.ToByteArray(), 1);
+		}
+
 		public static IEnumerable<Byte[]> Serialise(this UInt32 self) {
 			return Enumerable.Repeat(SerialiseUnsignedInteger(self, 4).ToArray(), 1);
 		}

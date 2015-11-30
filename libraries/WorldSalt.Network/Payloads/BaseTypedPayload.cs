@@ -1,4 +1,4 @@
-namespace WorldSalt.Network.Payloads.Connection {
+namespace WorldSalt.Network.Payloads {
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Streams.Bytes;
 

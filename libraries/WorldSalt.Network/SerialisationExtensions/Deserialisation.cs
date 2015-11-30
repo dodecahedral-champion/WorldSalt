@@ -38,6 +38,11 @@ namespace WorldSalt.Network.SerialisationExtensions {
 			return stream.DeserialiseUnsignedInteger(out value, 8);
 		}
 
+		public static IByteSource<TDir> Deserialise<TDir>(this IByteSource<TDir> stream, out Guid value) where TDir : IDirection {
+			value = new Guid(stream.ReadSequence(16));
+			return stream;
+		}
+
 		public static IByteSource<TDir> Deserialise<TItem, TDir>(this IByteSource<TDir> stream, out IList<TItem> value, Deserialiser<TItem, TDir> deserialiser) where TDir : IDirection {
 			CountSpecifier length;
 			stream = stream.Deserialise(out length);

@@ -5,6 +5,7 @@ namespace WorldSalt.UnitTests.Network.Payloads {
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Payloads.Connection;
+	using WorldSalt.Network.Payloads.Ping;
 
 	[TestFixture]
 	public class PayloadTypeVerification {
@@ -15,6 +16,14 @@ namespace WorldSalt.UnitTests.Network.Payloads {
 			VerifyTypes<FromServer>(0x00, 0x02).For<UnsupportedProtocolVersionPayload>();
 			VerifyTypes<FromClient>(0x00, 0x03).For<DisconnectPayload>();
 			VerifyTypes<FromServer>(0x00, 0x04).For<KickedPayload>();
+		}
+
+		[Test]
+		public void ShouldHaveCorrectTypeAndSubtypesForPingPayloads() {
+			VerifyTypes<FromClient>(0x01, 0x00).For<ClientPingPayload>();
+			VerifyTypes<FromServer>(0x01, 0x01).For<ClientPingResponsePayload>();
+			//VerifyTypes<FromServer>(0x01, 0x02).For<ServerPingPayload>();
+			//VerifyTypes<FromClient>(0x01, 0x03).For<ServerPingResponsePayload>();
 		}
 
 		private Verifier<TDirection> VerifyTypes<TDirection>(Byte expectedType, Byte expectedSubtype) where TDirection : IDirection {

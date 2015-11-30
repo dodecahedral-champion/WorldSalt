@@ -15,6 +15,10 @@ namespace WorldSalt.Network.SerialisationExtensions {
 			return sizeof(UInt64);
 		}
 
+		public static Length SerialisationLength(this Guid self) {
+			return 16;
+		}
+
 		public static Length SerialisationLength<T>(this IEnumerable<T> self, Length itemLength) {
 			return (Length)self.Count() * itemLength;
 		}

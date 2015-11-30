@@ -1,6 +1,5 @@
 namespace WorldSalt.Network.Payloads.Connection {
 	using System;
-	using System.IO;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.SerialisationExtensions;
 
@@ -9,10 +8,7 @@ namespace WorldSalt.Network.Payloads.Connection {
 		public override byte Subtype { get { return 0x04; } }
 
 		public override uint Length {
-			get {
-				return
-					Message.SerialisationLength();
-			}
+			get { return Message.SerialisationLength(); }
 		}
 
 		public string Message { get; private set; }

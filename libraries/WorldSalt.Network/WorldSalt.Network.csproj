@@ -86,6 +86,8 @@
     <Compile Include="Streams\Frames\FrameSourceFactory.cs" />
     <Compile Include="Streams\Frames\FrameSinkFactory.cs" />
     <Compile Include="Streams\Frames\IFrameSinkFactory.cs" />
+    <Compile Include="Payloads\Ping\ClientPingPayload.cs" />
+    <Compile Include="Payloads\Ping\ClientPingResponsePayload.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -97,5 +99,6 @@
     <Folder Include="Streams\Bytes\" />
     <Folder Include="Streams\Frames\" />
     <Folder Include="Streams\Payloads\" />
+    <Folder Include="Payloads\Ping\" />
   </ItemGroup>
 </Project>
