@@ -1,11 +1,9 @@
 namespace WorldSalt.UnitTests.Network.Streams.Frames {
-	using System;
 	using NUnit.Framework;
 	using Rhino.Mocks;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
-	using WorldSalt.Network.Streams;
 	using WorldSalt.Network.Streams.Bytes;
 	using WorldSalt.Network.Streams.Frames;
 

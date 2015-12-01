@@ -5,8 +5,8 @@ namespace WorldSalt.Network.Streams.Frames {
 	using WorldSalt.Network.Streams.Bytes;
 
 	public class FrameSourceFactory<TDir> : IFrameSourceFactory<TDir> where TDir : IDirection {
-		private IPayloadFactory<TDir> payloadFactory;
-		private IFrameFactory<TDir> frameFactory;
+		private readonly IPayloadFactory<TDir> payloadFactory;
+		private readonly IFrameFactory<TDir> frameFactory;
 
 		public FrameSourceFactory(IPayloadFactory<TDir> payloadFactory, IFrameFactory<TDir> frameFactory) {
 			this.payloadFactory = payloadFactory;

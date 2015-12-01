@@ -1,7 +1,5 @@
 namespace WorldSalt.UnitTests.Network.Payloads.Connection {
-	using System;
 	using NUnit.Framework;
-	using Rhino.Mocks;
 	using WorldSalt.Network;
 	using WorldSalt.Network.Payloads.Connection;
 

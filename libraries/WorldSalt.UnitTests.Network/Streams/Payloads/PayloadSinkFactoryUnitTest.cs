@@ -1,19 +1,15 @@
-using WorldSalt.Network.Streams.Frames;
-using WorldSalt.Network.Streams;
+namespace WorldSalt.UnitTests.Network.Streams.Payloads {
+    using NUnit.Framework;
+    using Rhino.Mocks;
+    using WorldSalt.Network.Direction;
+    using WorldSalt.Network.Frames;
+    using WorldSalt.Network.Payloads;
+    using WorldSalt.Network.Streams;
+    using WorldSalt.Network.Streams.Bytes;
+    using WorldSalt.Network.Streams.Frames;
+    using WorldSalt.Network.Streams.Payloads;
 
-namespace WorldSalt.UnitTests.Network {
-	using System;
-	using System.Net.Sockets;
-	using NUnit.Framework;
-	using Rhino.Mocks;
-	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Frames;
-	using WorldSalt.Network.Payloads;
-	using WorldSalt.Network.Payloads.Connection;
-	using WorldSalt.Network.Streams.Bytes;
-	using WorldSalt.Network.Streams.Payloads;
-
-	[TestFixture]
+    [TestFixture]
 	public class PayloadSinkFactoryUnitTest {
 		private IFrameSinkFactory<FromServer> frameSinkFactory;
 		private IFrameFactory<FromServer> frameFactory;

@@ -4,7 +4,7 @@ namespace WorldSalt.Network.Frames {
 	using WorldSalt.Network.Payloads;
 
 	public class FrameFactory<TDirection> : IFrameFactory<TDirection> where TDirection : IDirection {
-		private IPayloadFactory<TDirection> payloadFactory;
+		private readonly IPayloadFactory<TDirection> payloadFactory;
 
 		public FrameFactory(IPayloadFactory<TDirection> payloadFactory) {
 			this.payloadFactory = payloadFactory;

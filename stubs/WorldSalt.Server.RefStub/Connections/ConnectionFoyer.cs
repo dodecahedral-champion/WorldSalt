@@ -6,8 +6,8 @@ namespace WorldSalt.Server.RefStub.Connections {
 	using WorldSalt.Network.Streams.Bytes;
 
 	public class ConnectionFoyer : IConnectionFoyer {
-		private TcpListener listener;
-		IClientHandlerFactory clientHandlerFactory;
+		private readonly TcpListener listener;
+	    readonly IClientHandlerFactory clientHandlerFactory;
 
 		public ConnectionFoyer(IClientHandlerFactory clientHandlerFactory, int port) {
 			this.clientHandlerFactory = clientHandlerFactory;

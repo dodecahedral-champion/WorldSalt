@@ -10,9 +10,6 @@ namespace WorldSalt.Network.Payloads.Connection {
 			get { return 0; }
 		}
 
-		public DisconnectPayload() {
-		}
-
 		public override void SetBytes(byte[] bytes) {
 			MakeDirectedByteStream(bytes).AssertEnd();
 		}

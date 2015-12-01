@@ -1,7 +1,6 @@
 namespace WorldSalt.UnitTests.Network.Payloads {
 	using System;
 	using NUnit.Framework;
-	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Payloads.Connection;
@@ -30,15 +29,9 @@ namespace WorldSalt.UnitTests.Network.Payloads {
 			return new Verifier<TDirection> { ExpectedType = expectedType, ExpectedSubType = expectedSubtype };
 		}
 
-		private void VerifyPayloadTypes<TPayload, TDirection>(Byte expectedType, Byte expectedSubtype) where TPayload : ITypedPayload<TDirection>, new() where TDirection : IDirection {
-			var payload = new TPayload();
-			Assert.AreEqual(expectedType, payload.Type);
-			Assert.AreEqual(expectedSubtype, payload.Subtype);
-		}
-
 		private class Verifier<TDirection> where TDirection : IDirection {
-			public Byte ExpectedType { get; set; }
-			public Byte ExpectedSubType { get; set; }
+			public Byte ExpectedType { private get; set; }
+			public Byte ExpectedSubType { private get; set; }
 
 			public void For<TConcretePayload>() where TConcretePayload : ITypedPayload<TDirection>, new() {
 				var payload = new TConcretePayload();
@@ -48,4 +41,3 @@ namespace WorldSalt.UnitTests.Network.Payloads {
 		}
 	}
 }
-

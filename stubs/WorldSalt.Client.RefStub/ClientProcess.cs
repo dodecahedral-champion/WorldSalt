@@ -2,9 +2,7 @@ namespace WorldSalt.Client.RefStub {
 	using System;
 	using System.Linq;
 	using System.Net.Sockets;
-	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Payloads.Connection;
 	using WorldSalt.Network.Streams;
@@ -12,15 +10,15 @@ namespace WorldSalt.Client.RefStub {
 	using WorldSalt.Network.Streams.Payloads;
 
 	public class ClientProcess : IDisposable {
-		private IStreamConsumer<ITypedPayload<FromClient>> payloadSink;
-		private IStreamProducer<ITypedPayload<FromServer>> payloadSource;
+		private readonly IStreamConsumer<ITypedPayload<FromClient>> payloadSink;
+		private readonly IStreamProducer<ITypedPayload<FromServer>> payloadSource;
 
-		public ClientProcess(PayloadSinkFactory<FromClient> sinkFactory, PayloadSourceFactory<FromServer> sourceFactory, string hostname, int port) {
+		public ClientProcess(IPayloadSinkFactory<FromClient> sinkFactory, IPayloadSourceFactory<FromServer> sourceFactory, string hostname, int port) {
 			var socket = new TcpClient(hostname, port);
 			var byteSink = new TcpByteSink<FromClient>(socket);
 			var byteSource = new TcpByteSource<FromServer>(socket);
-			this.payloadSink = sinkFactory.Create(byteSink);
-			this.payloadSource = sourceFactory.Create(byteSource);
+			payloadSink = sinkFactory.Create(byteSink);
+			payloadSource = sourceFactory.Create(byteSource);
 		}
 
 		public void Dispose() {
@@ -39,9 +37,8 @@ namespace WorldSalt.Client.RefStub {
 			payloadSink.Put(new ConnectPayload(username, protocolVersion, Enumerable.Empty<UInt64>()));
 			var connectResponse = payloadSource.Take();
 			CheckForUnsupportedVersion(connectResponse as UnsupportedProtocolVersionPayload);
-			if(connectResponse as ConnectedPayload != null) {
+			if(connectResponse is ConnectedPayload) {
 				Console.WriteLine("[client] connected okay!");
-				return;
 			}
 		}
 

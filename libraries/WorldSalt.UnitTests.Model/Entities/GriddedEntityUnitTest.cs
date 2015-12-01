@@ -1,13 +1,11 @@
-namespace WorldSalt.UnitTests.Model {
-	using System;
-	using NUnit.Framework;
-	using Rhino.Mocks;
-	using WorldSalt.Model;
-	using WorldSalt.Model.Entities;
-	using WorldSalt.Model.Grids;
-	using WorldSalt.Model.Values;
+namespace WorldSalt.UnitTests.Model.Entities {
+    using NUnit.Framework;
+    using Rhino.Mocks;
+    using WorldSalt.Model.Entities;
+    using WorldSalt.Model.Grids;
+    using WorldSalt.Model.Values;
 
-	[TestFixture]
+    [TestFixture]
 	public class GriddedEntityUnitTest {
 		private IGridFactory gridFactory;
 

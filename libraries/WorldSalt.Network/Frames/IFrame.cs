@@ -13,7 +13,7 @@ namespace WorldSalt.Network.Frames {
 		byte[] GetBytes();
 	}
 
-	public interface ITypedFrame<TPayload, TDirection> : ITypedFrame<TDirection> where TPayload : ITypedPayload<TDirection> where TDirection : IDirection {
+	public interface ITypedFrame<out TPayload, TDirection> : ITypedFrame<TDirection> where TPayload : ITypedPayload<TDirection> where TDirection : IDirection {
 		new TPayload Payload { get; }
 	}
 }

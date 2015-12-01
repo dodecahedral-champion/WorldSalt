@@ -1,11 +1,7 @@
 namespace WorldSalt.UnitTests.Server.RefStub {
-	using System;
-	using System.Net;
-	using System.Net.Sockets;
 	using System.Threading;
 	using NUnit.Framework;
 	using Rhino.Mocks;
-	using WorldSalt.Network;
 	using WorldSalt.Server.RefStub;
 	using WorldSalt.Server.RefStub.Connections;
 

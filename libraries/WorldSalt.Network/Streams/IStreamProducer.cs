@@ -1,5 +1,5 @@
 namespace WorldSalt.Network.Streams {
-	public interface IStreamProducer<T> : IStreamCloseable {
+	public interface IStreamProducer<out T> : IStreamCloseable {
 		T Take();
 	}
 }

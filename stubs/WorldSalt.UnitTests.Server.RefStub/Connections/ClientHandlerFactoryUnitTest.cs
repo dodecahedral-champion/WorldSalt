@@ -1,15 +1,11 @@
 namespace WorldSalt.UnitTests.Server.RefStub.Connections {
-	using System;
 	using NUnit.Framework;
 	using Rhino.Mocks;
-	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Streams;
 	using WorldSalt.Network.Streams.Bytes;
 	using WorldSalt.Network.Streams.Payloads;
-	using WorldSalt.Server.RefStub;
 	using WorldSalt.Server.RefStub.Connections;
 
 	[TestFixture]

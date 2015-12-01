@@ -6,7 +6,6 @@ namespace WorldSalt.Client.RefStub {
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
-	using WorldSalt.Network.Streams;
 	using WorldSalt.Network.Streams.Frames;
 	using WorldSalt.Network.Streams.Payloads;
 

@@ -1,5 +1,4 @@
 namespace WorldSalt.UnitTests.Network.Frames {
-	using System;
 	using NUnit.Framework;
 	using Rhino.Mocks;
 	using WorldSalt.Network.Direction;

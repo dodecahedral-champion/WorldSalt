@@ -1,8 +1,6 @@
 namespace WorldSalt.UnitTests.Network.Payloads.Ping {
 	using System;
 	using NUnit.Framework;
-	using Rhino.Mocks;
-	using WorldSalt.Network;
 	using WorldSalt.Network.Payloads.Ping;
 
 	[TestFixture]

@@ -2,13 +2,12 @@ namespace WorldSalt.Server.RefStub {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Threading;
 	using System.Threading.Tasks;
 	using WorldSalt.Server.RefStub.Connections;
 
 	public class ServerProcess {
-		private IConnectionFoyer foyer;
-		private IList<Task> clients;
+		private readonly IConnectionFoyer foyer;
+		private readonly IList<Task> clients;
 
 		public ServerProcess(IConnectionFoyer foyer) {
 			this.foyer = foyer;

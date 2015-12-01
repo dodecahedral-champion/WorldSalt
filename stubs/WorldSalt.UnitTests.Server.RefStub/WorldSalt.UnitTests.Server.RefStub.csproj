@@ -36,6 +36,7 @@
     <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f">
       <Private>False</Private>
       <Package>rhino-mocks</Package>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="WorldSalt.Network">
       <HintPath>..\..\build\Debug\WorldSalt.Network.dll</HintPath>

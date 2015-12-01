@@ -1,13 +1,11 @@
-namespace WorldSalt.UnitTests.Network {
-	using System;
-	using NUnit.Framework;
-	using Rhino.Mocks;
-	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Frames;
-	using WorldSalt.Network.Payloads;
-	using WorldSalt.Network.Payloads.Connection;
+namespace WorldSalt.UnitTests.Network.Frames {
+    using NUnit.Framework;
+    using Rhino.Mocks;
+    using WorldSalt.Network.Direction;
+    using WorldSalt.Network.Frames;
+    using WorldSalt.Network.Payloads;
 
-	[TestFixture]
+    [TestFixture]
 	public class FrameUnitTest {
 		private FrameFactory<FromServer> factory;
 		private IPayloadFactory<FromServer> payloadFactory;

@@ -2,7 +2,7 @@ namespace WorldSalt.Network.Streams.Bytes {
 	using System.IO;
 
 	public class CloseableStreamWrapper : IStreamCloseable {
-		private Stream underlying;
+		private readonly Stream underlying;
 
 		public CloseableStreamWrapper(Stream underlying) {
 			this.underlying = underlying;

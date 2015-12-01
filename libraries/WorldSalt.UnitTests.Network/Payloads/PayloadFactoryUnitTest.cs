@@ -1,5 +1,4 @@
 namespace WorldSalt.UnitTests.Network.Payloads {
-	using System;
 	using NUnit.Framework;
 	using Rhino.Mocks;
 	using WorldSalt.Network.Direction;

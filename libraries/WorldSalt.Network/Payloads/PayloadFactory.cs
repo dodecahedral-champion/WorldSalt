@@ -3,7 +3,7 @@ namespace WorldSalt.Network.Payloads {
 	using WorldSalt.Network.Direction;
 
 	public class PayloadFactory<TDirection> : IPayloadFactory<TDirection> where TDirection : IDirection {
-		private IPayloadTypedCreator<TDirection> payloadTypedCreator;
+		private readonly IPayloadTypedCreator<TDirection> payloadTypedCreator;
 
 		public PayloadFactory(IPayloadTypedCreator<TDirection> payloadTypedCreator) {
 			this.payloadTypedCreator = payloadTypedCreator;

@@ -1,8 +1,6 @@
-namespace WorldSalt.Model {
-	using System;
-
+namespace WorldSalt.Model.Values {
 	public struct GridAxisBounds {
-		public Int64 Min;
-		public Int64 Max;
+		public System.Int64 Min;
+		public System.Int64 Max;
 	}
 }

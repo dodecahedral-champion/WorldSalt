@@ -4,8 +4,8 @@ namespace WorldSalt.Network.Streams.Payloads {
 	using WorldSalt.Network.Payloads;
 
 	public class PayloadSink<TDir> : IStreamConsumer<ITypedPayload<TDir>> where TDir : IDirection {
-		private IStreamConsumer<ITypedFrame<TDir>> underlying;
-		private IFrameFactory<TDir> frameFactory;
+		private readonly IStreamConsumer<ITypedFrame<TDir>> underlying;
+		private readonly IFrameFactory<TDir> frameFactory;
 
 		public PayloadSink(IStreamConsumer<ITypedFrame<TDir>> underlying, IFrameFactory<TDir> frameFactory) {
 			this.underlying = underlying;

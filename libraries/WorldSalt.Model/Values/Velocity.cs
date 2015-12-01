@@ -1,5 +1,4 @@
 namespace WorldSalt.Model.Values {
-	using System;
 	using CentimetresPerSecond = System.Int64;
 
 	public struct Velocity {

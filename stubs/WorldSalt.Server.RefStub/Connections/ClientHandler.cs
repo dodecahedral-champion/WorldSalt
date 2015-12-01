@@ -2,18 +2,15 @@ namespace WorldSalt.Server.RefStub.Connections {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Net.Sockets;
 	using WorldSalt.Network;
 	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Payloads.Connection;
 	using WorldSalt.Network.Streams;
-	using WorldSalt.Network.Streams.Payloads;
 
 	public class ClientHandler : IClientHandler {
-		private IStreamConsumer<ITypedPayload<FromServer>> payloadSink;
-		private IStreamProducer<ITypedPayload<FromClient>> payloadSource;
+		private readonly IStreamConsumer<ITypedPayload<FromServer>> payloadSink;
+		private readonly IStreamProducer<ITypedPayload<FromClient>> payloadSource;
 		const UInt64 SERVER_PROTOCOL = ProtocolVersion.CURRENT;
 		string username;
 

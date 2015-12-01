@@ -1,11 +1,11 @@
-namespace WorldSalt.UnitTests.Model {
-	using System;
-	using NUnit.Framework;
-	using Rhino.Mocks;
-	using WorldSalt.Model.Blocks;
-	using WorldSalt.Model.Values;
+namespace WorldSalt.UnitTests.Model.Blocks {
+    using System;
+    using NUnit.Framework;
+    using Rhino.Mocks;
+    using WorldSalt.Model.Blocks;
+    using WorldSalt.Model.Values;
 
-	[TestFixture]
+    [TestFixture]
 	public class BlockUnitTest {
 		[Test]
 		public void ShouldAssignConstructorValues() {
@@ -29,7 +29,7 @@ namespace WorldSalt.UnitTests.Model {
 			var target = new Block(expectedType);
 
 			Assert.AreEqual(expectedType, target.Type);
-			Assert.AreEqual((byte)0x00, target.SubType);
+			Assert.AreEqual(0x00, target.SubType);
 			Assert.AreEqual(default(BlockOrientation), target.Orientation);
 			Assert.IsNull(target.State);
 		}

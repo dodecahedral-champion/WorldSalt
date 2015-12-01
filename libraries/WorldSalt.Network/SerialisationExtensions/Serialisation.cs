@@ -6,10 +6,10 @@ namespace WorldSalt.Network.SerialisationExtensions {
 	using CountSpecifier = System.UInt32;
 
 	public static class Serialisation {
-		public delegate IEnumerable<Byte[]> Serialiser<T>(T self);
+		public delegate IEnumerable<Byte[]> Serialiser<in T>(T self);
 
 		public static IEnumerable<Byte[]> Serialise(this Byte self) {
-			return Enumerable.Repeat(new Byte[1] { self }, 1);
+			return Enumerable.Repeat(new Byte[] { self }, 1);
 		}
 
 		public static IEnumerable<Byte[]> Serialise(this Byte[] self) {
@@ -62,7 +62,7 @@ namespace WorldSalt.Network.SerialisationExtensions {
 		}
 
 		private static IEnumerable<Byte> SerialiseUnsignedInteger(UInt64 value, UInt16 integerSizeBytes) {
-			foreach(var i in Enumerable.Range(0, integerSizeBytes)) {
+			foreach(var _ in Enumerable.Range(0, integerSizeBytes)) {
 				var b = (Byte)(value % 256);
 				yield return b;
 				value = (value - b) / 256;

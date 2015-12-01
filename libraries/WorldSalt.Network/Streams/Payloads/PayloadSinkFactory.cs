@@ -1,14 +1,13 @@
-using WorldSalt.Network.Streams.Frames;
-using WorldSalt.Network.Frames;
-
 namespace WorldSalt.Network.Streams.Payloads {
 	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Payloads;
+    using WorldSalt.Network.Frames;
+    using WorldSalt.Network.Payloads;
 	using WorldSalt.Network.Streams.Bytes;
+    using WorldSalt.Network.Streams.Frames;
 
-	public class PayloadSinkFactory<TDir> : IPayloadSinkFactory<TDir> where TDir : IDirection {
-		private IFrameSinkFactory<TDir> frameSinkFactory;
-		private IFrameFactory<TDir> frameFactory;
+    public class PayloadSinkFactory<TDir> : IPayloadSinkFactory<TDir> where TDir : IDirection {
+		private readonly IFrameSinkFactory<TDir> frameSinkFactory;
+		private readonly IFrameFactory<TDir> frameFactory;
 
 		public PayloadSinkFactory(IFrameSinkFactory<TDir> frameSinkFactory, IFrameFactory<TDir> frameFactory) {
 			this.frameSinkFactory = frameSinkFactory;

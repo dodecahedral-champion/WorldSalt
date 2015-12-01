@@ -1,15 +1,12 @@
 namespace WorldSalt.Network.Streams.Frames {
-	using System;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.Frames;
 	using WorldSalt.Network.Payloads;
-	using WorldSalt.Network.Streams.Bytes;
-	using WorldSalt.Network.SerialisationExtensions;
 
 	public class FrameSource<TDir> : IStreamProducer<ITypedFrame<TDir>> where TDir : IDirection {
-		private IRawFrameSource<TDir> underlying;
-		private IPayloadFactory<TDir> payloadFactory;
-		private IFrameFactory<TDir> frameFactory;
+		private readonly IRawFrameSource<TDir> underlying;
+		private readonly IPayloadFactory<TDir> payloadFactory;
+		private readonly IFrameFactory<TDir> frameFactory;
 
 		public FrameSource(IRawFrameSource<TDir> underlying, IPayloadFactory<TDir> payloadFactory, IFrameFactory<TDir> frameFactory) {
 			this.underlying = underlying;

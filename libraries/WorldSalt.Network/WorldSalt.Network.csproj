@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,7 +52,6 @@
     <Compile Include="Payloads\PayloadTypedCreatorFromServer.cs" />
     <Compile Include="Payloads\UntypedPayload.cs" />
     <Compile Include="Streams\IStreamConsumer.cs" />
-    <Compile Include="Streams\IStreamDuplex.cs" />
     <Compile Include="Streams\IStreamProducer.cs" />
     <Compile Include="Streams\IStreamCloseable.cs" />
     <Compile Include="Direction\IDirection.cs" />
@@ -67,7 +66,6 @@
     <Compile Include="Streams\Bytes\CloseableStreamWrapper.cs" />
     <Compile Include="Streams\Bytes\IByteSource.cs" />
     <Compile Include="Streams\Bytes\IByteSink.cs" />
-    <Compile Include="Streams\Bytes\IByteDuplex.cs" />
     <Compile Include="Streams\Bytes\ByteArrayStream.cs" />
     <Compile Include="Payloads\BaseTypedPayload.cs" />
     <Compile Include="Streams\Bytes\TcpByteSource.cs" />
@@ -92,15 +90,5 @@
     <Compile Include="Payloads\Ping\ServerPingResponsePayload.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Direction\" />
-    <Folder Include="SerialisationExtensions\" />
-    <Folder Include="Streams\" />
-    <Folder Include="Payloads\" />
-    <Folder Include="Frames\" />
-    <Folder Include="Streams\Bytes\" />
-    <Folder Include="Streams\Frames\" />
-    <Folder Include="Streams\Payloads\" />
-    <Folder Include="Payloads\Ping\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

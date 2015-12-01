@@ -46,7 +46,7 @@ namespace WorldSalt.Network.SerialisationExtensions {
 		public static IByteSource<TDir> Deserialise<TItem, TDir>(this IByteSource<TDir> stream, out IList<TItem> value, Deserialiser<TItem, TDir> deserialiser) where TDir : IDirection {
 			CountSpecifier length;
 			stream = stream.Deserialise(out length);
-			value = stream.ReadSequence<TItem, TDir>(length, deserialiser).ToList();
+			value = stream.ReadSequence(length, deserialiser).ToList();
 			return stream;
 		}
 
@@ -57,7 +57,7 @@ namespace WorldSalt.Network.SerialisationExtensions {
 		}
 
 		private static IEnumerable<TItem> ReadSequence<TItem, TDir>(this IByteSource<TDir> stream, CountSpecifier numItems, Deserialiser<TItem, TDir> deserialiser) where TDir : IDirection {
-			foreach (var i in Enumerable.Repeat(0, (int)numItems)) {
+			foreach (var _ in Enumerable.Repeat(0, (int)numItems)) {
 				TItem item;
 				stream = deserialiser(stream, out item);
 				yield return item;

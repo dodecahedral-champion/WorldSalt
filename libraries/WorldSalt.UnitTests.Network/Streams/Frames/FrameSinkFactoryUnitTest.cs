@@ -1,16 +1,12 @@
-namespace WorldSalt.UnitTests.Network {
-	using System;
-	using System.Net.Sockets;
-	using NUnit.Framework;
-	using Rhino.Mocks;
-	using WorldSalt.Network.Direction;
-	using WorldSalt.Network.Frames;
-	using WorldSalt.Network.Payloads;
-	using WorldSalt.Network.Payloads.Connection;
-	using WorldSalt.Network.Streams.Bytes;
-	using WorldSalt.Network.Streams.Frames;
+namespace WorldSalt.UnitTests.Network.Streams.Frames {
+    using NUnit.Framework;
+    using Rhino.Mocks;
+    using WorldSalt.Network.Direction;
+    using WorldSalt.Network.Frames;
+    using WorldSalt.Network.Streams.Bytes;
+    using WorldSalt.Network.Streams.Frames;
 
-	[TestFixture]
+    [TestFixture]
 	public class FrameSinkFactoryUnitTest {
 		private IByteSink<FromServer> byteSink;
 		private ITypedFrame<FromServer> frame;

@@ -4,7 +4,7 @@ namespace WorldSalt.Network.Streams.Frames {
 	using WorldSalt.Network.Streams.Bytes;
 
 	public class FrameSink<TDir> : IStreamConsumer<ITypedFrame<TDir>> where TDir : IDirection {
-		private IByteSink<TDir> underlying;
+		private readonly IByteSink<TDir> underlying;
 
 		public FrameSink(IByteSink<TDir> underlying) {
 			this.underlying = underlying;

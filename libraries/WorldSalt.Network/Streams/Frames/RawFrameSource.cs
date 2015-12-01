@@ -7,9 +7,9 @@ namespace WorldSalt.Network.Streams.Frames {
 	using WorldSalt.Network.SerialisationExtensions;
 
 	public class RawFrameSource<TDir> : IRawFrameSource<TDir> where TDir : IDirection {
-		private IByteSource<TDir> underlying;
-		private IPayloadFactory<TDir> payloadFactory;
-		private IFrameFactory<TDir> frameFactory;
+		private readonly IByteSource<TDir> underlying;
+		private readonly IPayloadFactory<TDir> payloadFactory;
+		private readonly IFrameFactory<TDir> frameFactory;
 
 		public RawFrameSource(IByteSource<TDir> underlying, IPayloadFactory<TDir> payloadFactory, IFrameFactory<TDir> frameFactory) {
 			this.underlying = underlying;

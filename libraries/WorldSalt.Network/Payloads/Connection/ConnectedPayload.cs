@@ -2,7 +2,6 @@ namespace WorldSalt.Network.Payloads.Connection {
 	using System;
 	using WorldSalt.Network.Direction;
 	using WorldSalt.Network.SerialisationExtensions;
-	using WorldSalt.Network.Streams.Bytes;
 
 	public class ConnectedPayload : BaseTypedPayload<FromServer> {
 		public override byte Type { get { return 0x00; } }

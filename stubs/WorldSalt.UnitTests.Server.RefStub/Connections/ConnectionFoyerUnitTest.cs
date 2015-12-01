@@ -1,9 +1,7 @@
 namespace WorldSalt.UnitTests.Server.RefStub.Connections {
-	using System;
 	using System.Net.Sockets;
 	using NUnit.Framework;
 	using Rhino.Mocks;
-	using WorldSalt.Server.RefStub;
 	using WorldSalt.Server.RefStub.Connections;
 
 	[TestFixture]

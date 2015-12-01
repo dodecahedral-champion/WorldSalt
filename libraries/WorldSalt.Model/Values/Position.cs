@@ -1,5 +1,4 @@
-namespace WorldSalt.Model {
-	using System;
+namespace WorldSalt.Model.Values {
 	using Centimetres = System.Int64;
 
 	public struct Position {

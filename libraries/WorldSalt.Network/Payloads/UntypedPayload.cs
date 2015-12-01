@@ -1,5 +1,7 @@
 namespace WorldSalt.Network.Payloads {
-	public class UntypedPayload<TDirection> : IRawPayload<TDirection> {
+    using WorldSalt.Network.Direction;
+
+    public class UntypedPayload<TDirection> : IRawPayload<TDirection> where TDirection : IDirection {
 		private byte[] rawBuffer;
 		public uint Length {
 			get { return (uint)rawBuffer.Length; }
