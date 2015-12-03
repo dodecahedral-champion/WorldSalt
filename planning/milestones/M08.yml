@@ -1,0 +1,16 @@
+name: Gadget Collector
+criteria:
+- The avatar can now walk on ground, depending on gravity.
+- The station has a new (extension) block: gravity generator.
+- A gravity generator determines the "floor" blocks of the station, and generates a gravity force for objects nearby.
+- The inventory of entities is now defined by an extension.
+- An extension now provides wearable items.  Worn items become a child of the wearer.
+- An extension now allows wielding items.  Wielded items become a child of the wearer.
+- The avatar now starts with items in inventory and worn: space helmet, space suit upper, space suit lower.
+- The avatar helmet lights now belong to the helmet clothing.
+- The avatar now starts with tools in inventory: mining beamer, handbrain
+- The avatar now needs to target a block with the mining beamer to mine (solitaire blocks can still be collected directly).
+- The avatar can target a block with the handbrain to identify and analyse it.
+- The avatar can interact with the handbrain to store arbitrary text in it.
+- Biological blocks now take damage if exposed to vacuum or heavy atmosphere without a space suit.
+- The avatar now has a breath meter.  This provides protection against vacuum/drowning/heavy atmo until the meter runs out.

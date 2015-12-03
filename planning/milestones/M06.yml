@@ -1,0 +1,16 @@
+name: Mining Station
+criteria:
+- The avatar is now a head block, with a child block (upper body) and grandchild block (lower body).  Controls roughly as before.
+- The asteroids now contain crystal ore blocks as well as metal ore.  A refinery can convert crystal ore into processed crystal blocks.
+- The mining pod has new (extension) blocks: flight control panel, thruster, storage, docking clamp
+- A large mining station is now nearby.
+- The mining station has new (extension) blocks: docking clamp receiver, factory
+- The avatar can target a factory and interface with it.  Supplying metal/crystal blocks to a factory yields the various artificial blocks.
+- The avatar can target a docking clamp/clamp receiver block and manually release it.
+- The avatar can target a storage block and interface with it.  This allows interacting with the block owning entity's inventory.
+- The inventory of an entity can now be manually organised into a tree of named containers.
+- The avatar can target a flight control panel and interface to it.  The avatar becomes attached as a child of the block owning entity, and client movement controls now control any thrusters on the owning entity.
+- When a docking clamp comes close to a clamp receiver, they are magnetically drawn to each other.  On contact, the clamp owning entity becomes a child of the receiver owning entity.
+- The docking clamp and receiver have specific (/24) orientation, and magnetically align to each other.
+- The avatar can now specify the orientation of a block when placing it.
+- The avatar can now target a block and rotate it in-place.

@@ -1,0 +1,9 @@
+name: Asteroid Field
+criteria:
+- Blocks and entities have mass.
+- Collision detection exists between entities.
+- Colliding entities can impart linear and rotational forces.
+- Entities are attached to local spatial grids instead of a single global grid.
+- Asteroid-like entities are created in a field that fills all of space, generated on-demand as the avatar moves about.
+- Entities which fall out of the view zone are persisted to disk and regenerated if they come back into view.
+- Each asteroid is composed of a single block type, but there are several different types for different asteroids.

@@ -1,0 +1,11 @@
+name: Ghost Observer
+criteria:
+- A user can connect to a server (without authentication) and is given an avatar entity which can fly around arbitrarily.
+- Entities within visual range of the avatar are transmitted in total to the client and displayed.
+- At least two kinds of block are visible, plus empty space.
+- The avatar has no walking capacity yet.
+- A simple static skybox is displayed on the client.
+- Block textures are hardcoded at the client side, not transmitted.
+- The avatar is controlled by altering its orientation and adding an artificial force vector.
+- Entities in the world are created by a simple pattern.
+- No collision detection exists yet.

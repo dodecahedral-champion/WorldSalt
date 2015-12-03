@@ -1,0 +1,10 @@
+name: Mining Pod
+criteria:
+- The world now contains a mining pod near the player start point.
+- The pod is composed of several (extension) block types: hull, door, refinery.
+- Each entity now has an inventory, which is a single list of slots.
+- The avatar can now target a block and mine it, entering the avatar's inventory.
+- The avatar can target a door and open/close it.
+- The avatar can target a refinery and interface with it.  Supplying ore blocks to the refinery yields processed metal blocks.
+- The avatar can target the side of a block and place a block from inventory to it.
+- The avatar can drop a block, causing it to become a one-block entity nearby.
