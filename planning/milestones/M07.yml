@@ -1,26 +1,26 @@
 name: Planetary Explorer
 criteria:
-- The star system now contains three planets: a primordial planet, a verdant planet, and a gas giant.  The verdant planet has a moon, and the gas giant has several.  All are initially orbiting.
-- Entities now consist of multiple sub-grids which can be persistence-controlled separately.  This allows convenient unloading of parts of some large structures.
-- At long viewing range, entities may be rendered at low resolution (a single cube per sub-grid chunk)
-- The primordial planet contains new (extension) blocks: lava
-- The verdant planet contains new (extension) blocks: water, dirt, grassy dirt, atmosphere, log, leaves, flowers.
-- The gas giant planet contains new (extension) blocks: atmosphere, heavy atmosphere, crushing atmosphere.
-- Ore can be found on the primordial and verdant planet, and the gas giant moons.
-- The station contains new (extension) blocks: bed, chair, food dispenser.
-- The avatar can interact with a chair block to sit, becoming a child of the block owning entity.
-- The avatar can interact with a bed to sleep, becoming a child of the block owning entity.
-- Entities can now be damaged and destroyed (extension-defined).
-- The avatar respawns if destroyed.  The respawn point is either the avatar creation point or the last bed slept in.
-- A health meter is displayed on the client GUI.
-- The avatar regains health over time, faster if seated or sleeping.
-- The avatar can interact with a food dispenser, which creates a nutri-block.
-- The avatar can consume a nutri-block nearby or from inventory.  This restores some health.
-- Solid blocks in crushing atmosphere take damage continually.
-- Blocks near solar plasma blocks take damage continuously.
-- Blocks in contact with lava take damage continuously.
-- Lava and water blocks both have flow blocks.  Fluid flow similar to MC's model, but with a more clearly-defined automaton.
-- Leaves and flowers release seeds of the relevant kind.  These attach as a child of any dirt block they rest on.  Attached seeds grow while near water and receiving light.
-- Flower seeds grow directly into flowers after some time.
-- Tree seeds grow into a sapling block, which grows upwards into several sapling blocks.  The sapling blocks then convert into logs and produce leaf blocks.
-- Dirt becomes grassy dirt if adjacent to grass for some time and receiving light.
+- "The star system now contains three planets: a primordial planet, a verdant planet, and a gas giant.  The verdant planet has a moon, and the gas giant has several.  All are initially orbiting."
+- "Entities now consist of multiple sub-grids which can be persistence-controlled separately.  This allows convenient unloading of parts of some large structures."
+- "At long viewing range, entities may be rendered at low resolution (a single cube per sub-grid chunk)"
+- "The primordial planet contains new (extension) blocks: lava"
+- "The verdant planet contains new (extension) blocks: water, dirt, grassy dirt, atmosphere, log, leaves, flowers."
+- "The gas giant planet contains new (extension) blocks: atmosphere, heavy atmosphere, crushing atmosphere."
+- "Ore can be found on the primordial and verdant planet, and the gas giant moons."
+- "The station contains new (extension) blocks: bed, chair, food dispenser."
+- "The avatar can interact with a chair block to sit, becoming a child of the block owning entity."
+- "The avatar can interact with a bed to sleep, becoming a child of the block owning entity."
+- "Entities can now be damaged and destroyed (extension-defined)."
+- "The avatar respawns if destroyed.  The respawn point is either the avatar creation point or the last bed slept in."
+- "A health meter is displayed on the client GUI."
+- "The avatar regains health over time, faster if seated or sleeping."
+- "The avatar can interact with a food dispenser, which creates a nutri-block."
+- "The avatar can consume a nutri-block nearby or from inventory.  This restores some health."
+- "Solid blocks in crushing atmosphere take damage continually."
+- "Blocks near solar plasma blocks take damage continuously."
+- "Blocks in contact with lava take damage continuously."
+- "Lava and water blocks both have flow blocks.  Fluid flow similar to MC's model, but with a more clearly-defined automaton."
+- "Leaves and flowers release seeds of the relevant kind.  These attach as a child of any dirt block they rest on.  Attached seeds grow while near water and receiving light."
+- "Flower seeds grow directly into flowers after some time."
+- "Tree seeds grow into a sapling block, which grows upwards into several sapling blocks.  The sapling blocks then convert into logs and produce leaf blocks."
+- "Dirt becomes grassy dirt if adjacent to grass for some time and receiving light."

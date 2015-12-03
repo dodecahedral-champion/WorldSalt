@@ -1,10 +1,10 @@
 name: Asteroid Belt
 criteria:
-- The world now consists of a sun surrounded by a belt of asteroids.
-- The sun is made of a block type which is a light source (this is an extension).
-- The avatar has helmet lights to illuminate what the player is looking at; this is an extension which defines the properties of the avatar's head block.
-- An extension defines gravitation: all currently-loaded entities gravitate, according to the Chebyshev metric in the entity's own coordinate system.
-- The asteroids are initially in orbit around the sun.
-- Persistence loading/unloading behaviour is defined via extensions.
-- Objects are unloaded at range depending on their size.
-- Block loading is based on sensory availability, so obscured blocks are not transmitted.
+- "The world now consists of a sun surrounded by a belt of asteroids."
+- "The sun is made of a block type which is a light source (this is an extension)."
+- "The avatar has helmet lights to illuminate what the player is looking at; this is an extension which defines the properties of the avatar's head block."
+- "An extension defines gravitation: all currently-loaded entities gravitate, according to the Chebyshev metric in the entity's own coordinate system."
+- "The asteroids are initially in orbit around the sun."
+- "Persistence loading/unloading behaviour is defined via extensions."
+- "Objects are unloaded at range depending on their size."
+- "Block loading is based on sensory availability, so obscured blocks are not transmitted."

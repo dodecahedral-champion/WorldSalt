@@ -1,10 +1,10 @@
 name: Lua Ore
 criteria:
-- Extensions are negotiated between server and client at startup.
-- Different block types are extensions, including their textures.
-- The world generator is derived from an extension.
-- The avatar generator is derived from an extension.
-- Some physics-monitoring extensions make cosmetic changes to blocks during asteroid-asteroid collisions.
-- The avatar can target a block with the client GUI and impart an artificial force to it.
-- The avatar can target a block with the client GUI and come to a relative stop in its reference frame (changing spatial grid in the process).
-- The asteroids are now speckled with ore patches (cosmetic only).
+- "Extensions are negotiated between server and client at startup."
+- "Different block types are extensions, including their textures."
+- "The world generator is derived from an extension."
+- "The avatar generator is derived from an extension."
+- "Some physics-monitoring extensions make cosmetic changes to blocks during asteroid-asteroid collisions."
+- "The avatar can target a block with the client GUI and impart an artificial force to it."
+- "The avatar can target a block with the client GUI and come to a relative stop in its reference frame (changing spatial grid in the process)."
+- "The asteroids are now speckled with ore patches (cosmetic only)."
