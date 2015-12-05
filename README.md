@@ -13,6 +13,11 @@ The current reference client/server are just stubs, but you can build them with 
 
 All solutions should build in Monodevelop and Visual Studio.
 
+## Dependencies
+### Tests
+* NUnit
+* [Rhino Mocks](http://hibernatingrhinos.com/oss/rhino-mocks)
+
 ## Contact Details
 The home repository is at <https://github.com/dodecahedral-champion/worldsalt>
 
