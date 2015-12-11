@@ -6,9 +6,10 @@
 * More Listeners than Talkers
 * More Praise-Givers than -Askers
 * Prefer Writing over Vidyo-making
+* Confusing Collection of Incompatible Individuals
 
 This describes how we comport ourselves within the project.
-Of course, outside the project we may be as brash and arrogant as we wish. :-)
+Of course, outside the project we may be as brash and arrogant as we wish.  Or we can remain polite! :-)
 
 Any correction should be given Gently and received Modestly.
 
