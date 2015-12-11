@@ -21,6 +21,8 @@ If you run into problems and have to stop working on the task, please remove you
 ## Completion
 When a task is completed, its file is deleted.  Ideally this should be in the same commit that completes the task, and should be done before the `task/*` branch is merged back into `unstable`.
 
+All tests must pass before a task is considered complete.
+
 ## Reopening
 Do not reuse task numbers, even if we need to "reopen" a task that was completed wrongly.  In this case we just create a new task with a new number, and reference the old task in its description.
 

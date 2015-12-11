@@ -60,6 +60,11 @@ When done, it is merged into both `master` and `unstable`.
 If a `milestone/*` branch is currently active, the hotfix can also be merged into it.
 The `master` branch is tagged with `release/hotfix/B99` at this point.
 
+## Continuous Integration
+Commits to `unstable` and `master` automatically trigger a test run in [travis-ci](https://travis-ci.org/dodecahedral-champion/WorldSalt).
+
+Breakages are announced in [#worldsalt-dev](irc://irc.freenode.net/#worldsalt-dev) at irc.freenode.net as well as via email.
+
 ## Experiments
 Experimental work should please be kept in personal repositories.
 Naming such local branches as `experimental/*` will help them be spotted if accidentally pushed. :-)
