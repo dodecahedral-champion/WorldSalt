@@ -1,0 +1,19 @@
+language: csharp
+solution: libraries/WorldSalt.sln
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+  irc:
+    channels:
+      - "irc.freenode.net#worldsalt-dev"
+    on_success: change
+    on_failure: change
+    template:
+      - "%{branch}/%{commit} %{result} [%{author}] : %{build_url}"
+install:
+  - nuget restore libraries/WorldSalt.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory .testrunner
+script:
+  - xbuild /p:Configuration=Release libraries/WorldSalt.sln
+  - mono ./.testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./build/Release/WorldSalt.UnitTests.Model.dll ./build/Release/WorldSalt.UnitTests.Network.dll

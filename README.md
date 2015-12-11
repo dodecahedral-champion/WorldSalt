@@ -1,6 +1,9 @@
 # WorldSalt
 A general purpose extensible engine for block games.
 
+* `master` [![master](https://travis-ci.org/dodecahedral-champion/WorldSalt.svg?branch=master)](https://travis-ci.org/dodecahedral-champion/WorldSalt)
+* `unstable` [![unstable](https://travis-ci.org/dodecahedral-champion/WorldSalt.svg?branch=unstable)](https://travis-ci.org/dodecahedral-champion/WorldSalt)
+
 ## Planned Features
 * client-server architecture
 * ubiquitous extension framework in Lua
@@ -35,3 +38,4 @@ Read about our [contribution workflows](planning/workflow/index.md).
 
 ### IRC Channels
 * [#worldsalt](irc://irc.freenode.net/#worldsalt) at irc.freenode.net
+* [#worldsalt-dev](irc://irc.freenode.net/#worldsalt-dev) at irc.freenode.net
