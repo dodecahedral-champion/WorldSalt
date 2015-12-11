@@ -18,7 +18,20 @@ All solutions should build in Monodevelop and Visual Studio.
 * NUnit
 * [Rhino Mocks](http://hibernatingrhinos.com/oss/rhino-mocks)
 
-## Contact Details
-The home repository is at <https://github.com/dodecahedral-champion/worldsalt>
+## Contributing
+If you would like to contribute, please first read [CONTRIBUTORS.md](CONTRIBUTORS.md) to understand our brand of stoicism and whimsy.
 
-Email contact: dodecahedral_champion@yahoo.co.uk
+If you are still happy, please ask to be added as a collaborator on github, at <https://github.com/dodecahedral-champion/worldsalt>.
+
+Read about our [contribution workflows](planning/workflow/index.md).
+
+## Contact Details
+
+### Project owner
+* Dodecahedral Champion
+* [github](https://github.com/dodecahedral-champion/)
+* [e-mail](mailto:dodecahedral_champion@yahoo.co.uk)
+* IRC: DChampion at irc.freenode.net
+
+### IRC Channels
+* [#worldsalt](irc://irc.freenode.net/#worldsalt) at irc.freenode.net
