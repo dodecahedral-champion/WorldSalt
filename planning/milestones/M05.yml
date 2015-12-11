@@ -1,4 +1,5 @@
 name: Mining Pod
+landmark: "Artificial blocks with interactions."
 criteria:
 - "The world now contains a mining pod near the player start point."
 - "The pod is composed of several (extension) block types: hull, door, refinery."

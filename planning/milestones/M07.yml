@@ -1,4 +1,5 @@
 name: Planetary Explorer
+landmark: "Planets and natural gravitation."
 criteria:
 - "The star system now contains three planets: a primordial planet, a verdant planet, and a gas giant.  The verdant planet has a moon, and the gas giant has several.  All are initially orbiting."
 - "Entities now consist of multiple sub-grids which can be persistence-controlled separately.  This allows convenient unloading of parts of some large structures."

@@ -1,4 +1,5 @@
 name: Gadget Collector
+landmark: "Creature naturalisation."
 criteria:
 - "The avatar can now walk on ground, depending on gravity."
 - "The station has a new (extension) block: gravity generator."

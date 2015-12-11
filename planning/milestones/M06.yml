@@ -1,4 +1,5 @@
 name: Mining Station
+landmark: "Steerable vessels"
 criteria:
 - "The avatar is now a head block, with a child block (upper body) and grandchild block (lower body).  Controls roughly as before."
 - "The asteroids now contain crystal ore blocks as well as metal ore.  A refinery can convert crystal ore into processed crystal blocks."

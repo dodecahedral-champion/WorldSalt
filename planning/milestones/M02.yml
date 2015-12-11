@@ -1,4 +1,5 @@
 name: Asteroid Field
+landmark: "Physical interactions between entities."
 criteria:
 - "Blocks and entities have mass."
 - "Collision detection exists between entities."

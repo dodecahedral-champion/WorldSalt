@@ -1,4 +1,5 @@
 name: Asteroid Belt
+landmark: "Gravitation."
 criteria:
 - "The world now consists of a sun surrounded by a belt of asteroids."
 - "The sun is made of a block type which is a light source (this is an extension)."

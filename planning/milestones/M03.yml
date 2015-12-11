@@ -1,4 +1,5 @@
 name: Lua Ore
+landmark: "Script support."
 criteria:
 - "Extensions are negotiated between server and client at startup."
 - "Different block types are extensions, including their textures."

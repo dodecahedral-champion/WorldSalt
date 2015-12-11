@@ -1,4 +1,5 @@
 name: Ghost Observer
+landmark: "Moving around amongst entities."
 criteria:
 - "A user can connect to a server (without authentication) and is given an avatar entity which can fly around arbitrarily."
 - "Entities within visual range of the avatar are transmitted in total to the client and displayed."
